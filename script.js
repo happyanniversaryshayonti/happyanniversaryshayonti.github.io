@@ -1840,8 +1840,5 @@ if (numericalHint && numericalHintText) {
     });
 
 }
-
-        }
-
     }
 );
