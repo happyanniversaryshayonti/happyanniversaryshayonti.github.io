@@ -301,23 +301,22 @@ welcomeScreen.addEventListener(
 
 
 /* ================================
-   NUMERICAL PASSWORD
+NUMERICAL PASSWORD
 ================================ */
 const numberButtons =
-    document.querySelectorAll(
-        ".number-button"
-    );
+document.querySelectorAll(
+    ".number-button"
+);
 
 const backspaceButton =
-    document.getElementById(
-        "backspace"
-    );
+document.getElementById(
+    "backspace"
+);
 
 const dots =
-    document.querySelectorAll(
-        ".dot"
-    );
-
+document.querySelectorAll(
+    ".dot"
+);
 
 numberButtons.forEach(
     button => {
@@ -359,7 +358,6 @@ numberButtons.forEach(
     }
 );
 
-
 backspaceButton.addEventListener(
     "click",
     () => {
@@ -375,7 +373,6 @@ backspaceButton.addEventListener(
     }
 );
 
-
 function updateDots() {
 
     dots.forEach(
@@ -385,6 +382,39 @@ function updateDots() {
                 "filled",
                 index <
                 enteredPassword.length
+            );
+
+        }
+    );
+
+}
+
+
+/* ================================
+NUMERICAL PASSWORD HINT
+================================ */
+
+const numericalHint =
+    document.getElementById(
+        "numerical-hint"
+    );
+
+const numericalHintText =
+    document.getElementById(
+        "numerical-hint-text"
+    );
+
+if (
+    numericalHint &&
+    numericalHintText
+) {
+
+    numericalHint.addEventListener(
+        "click",
+        () => {
+
+            numericalHintText.classList.toggle(
+                "show"
             );
 
         }
@@ -1824,21 +1854,3 @@ window.addEventListener(
             renderPuzzleBoard(
                 currentPuzzleState
             );
-
-      const numericalHint =
-    document.getElementById("numerical-hint");
-
-const numericalHintText =
-    document.getElementById("numerical-hint-text");
-
-if (numericalHint && numericalHintText) {
-
-    numericalHint.addEventListener("click", function () {
-
-        numericalHintText.classList.toggle("show");
-
-    });
-
-}
-    }
-);
