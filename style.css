@@ -2089,19 +2089,21 @@ PUZZLE FLOWER DRIFT
     }
 
 
-#numerical-hint {
-    display: block;
+/* ================================
+   NUMERICAL PASSWORD HINT
+================================ */
 
+#numerical-hint {
     background: none !important;
     border: none !important;
-    outline: none !important;
     box-shadow: none !important;
+    outline: none !important;
 
     padding: 0 !important;
-    margin: 22px 0 0 0 !important;
+    margin: 10px 0 0 0 !important;
 
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13px;
     color: #d98aa8;
 
     text-decoration: underline;
@@ -2109,16 +2111,15 @@ PUZZLE FLOWER DRIFT
 }
 
 #numerical-hint-text {
-    display: none !important;
+    display: none;
 
-    margin: 8px 0 0 0 !important;
+    margin: 5px 0 0 0 !important;
 
     font-family: inherit;
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 12px;
     color: #d98aa8;
 }
 
 #numerical-hint-text.show {
-    display: block !important;
+    display: block;
 }
