@@ -284,6 +284,11 @@ input {
 NUMERICAL PASSWORD
 ========================================================= */
 
+.password-content {
+    position: relative;
+    text-align: center;
+}
+
 .password-content h1,
 .password-content .hint {
     font-weight: 400;
@@ -334,6 +339,7 @@ PASSWORD DOTS
 
 .dot.filled {
     background: #ffffff;
+
     transform: scale(1.08);
 }
 
@@ -341,17 +347,7 @@ PASSWORD DOTS
 NUMERICAL PASSWORD HINT
 ========================================================= */
 
-/*
-The "hint" button stays close to "Enter password".
-
-The actual hint is absolutely positioned, so when
-it appears it DOES NOT push the password dots or
-keypad downward.
-*/
-
 #numerical-hint {
-    position: relative;
-
     display: inline-block;
 
     background: none !important;
@@ -361,6 +357,9 @@ keypad downward.
 
     padding: 0 !important;
 
+    /*
+    Keeps "hint" close to "Enter password".
+    */
     margin: 0 0 32px 0 !important;
 
     font-family: inherit;
@@ -386,18 +385,24 @@ keypad downward.
 ACTUAL HINT TEXT
 ========================================================= */
 
+/*
+The actual sentence is removed from the normal layout.
+Therefore, when it appears, the dots and keypad DO NOT MOVE.
+*/
+
 #numerical-hint-text {
     position: absolute;
 
     left: 50%;
 
-    transform: translateX(-50%);
-
     /*
-    Adjust this value to move the sentence
-    vertically without moving anything else.
+    The password content starts with the title.
+    This places the hint sentence underneath
+    the "hint" button and above the circles.
     */
-    top: 72px;
+    top: 62px;
+
+    transform: translateX(-50%);
 
     width: max-content;
     max-width: 90%;
