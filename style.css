@@ -398,29 +398,18 @@ input {
 #numerical-hint-text {
     display: none;
 
-    margin:
-        14px
-        0
-        0
-        0 !important;
+    margin: -8px 0 24px 0;
 
     font-family: inherit;
-
-    font-size: 10px;
-
-    line-height: 1.4;
+    font-size: 0.6rem;
+    line-height: 1.3;
 
     color: #c98292;
-
-    text-align: center;
-
-    font-weight: 400;
 }
 
 #numerical-hint-text.show {
     display: block;
 }
-
 
 /* =========================================================
    KEYPAD
