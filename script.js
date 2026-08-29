@@ -128,6 +128,14 @@ const puzzles = [
     }
 ];
 
+/* ================================
+   PRELOAD PUZZLE IMAGES
+================================ */
+
+puzzles.forEach(puzzle => {
+    const img = new Image();
+    img.src = puzzle.image;
+});
 
 /* ================================
    STATE
