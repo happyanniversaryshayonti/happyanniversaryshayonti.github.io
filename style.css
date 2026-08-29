@@ -2090,22 +2090,35 @@ PUZZLE FLOWER DRIFT
 
 
 #numerical-hint {
-    background: transparent !important;
+    display: block;
+
+    background: none !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
+
     padding: 0 !important;
-    margin: 0 !important;
-    font: inherit;
-    color: inherit;
+    margin: 22px 0 0 0 !important;
+
+    font-family: inherit;
+    font-size: 14px;
+    color: #d98aa8;
+
+    text-decoration: underline;
     cursor: pointer;
 }
 
 #numerical-hint-text {
-    display: none;
-    margin: 8px 0 0 0;
+    display: none !important;
+
+    margin: 8px 0 0 0 !important;
+
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #d98aa8;
 }
 
 #numerical-hint-text.show {
-    display: block;
+    display: block !important;
 }
