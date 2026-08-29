@@ -1,0 +1,2090 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #eeeeee;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* =========================================================
+   GENERAL SCREENS
+========================================================= */
+
+.screen {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login-screen {
+    z-index: 5;
+
+    background: #d6d6d6;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.login-screen.hide {
+    opacity: 0;
+    transform: translateY(-100px);
+
+    pointer-events: none;
+}
+
+.login-box {
+    width: min(90%, 360px);
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.login-box h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    margin-bottom: 28px;
+}
+
+.login-box label {
+    font-size: 0.85rem;
+
+    margin-bottom: 7px;
+}
+
+.login-box input {
+    width: 100%;
+    height: 42px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #cccccc;
+
+    padding: 0 10px;
+
+    font-size: 0.9rem;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.login-box input:focus {
+    outline: none;
+
+    border-color: #999999;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.035);
+}
+
+#password-hint {
+    align-self: flex-start;
+
+    border: 0;
+    background: none;
+
+    color: #777777;
+
+    font-size: 0.8rem;
+
+    cursor: pointer;
+
+    text-decoration: underline;
+
+    margin-bottom: 10px;
+}
+
+.hint-text,
+.login-error {
+    display: none;
+
+    color: #555555;
+
+    font-size: 0.8rem;
+
+    line-height: 1.45;
+
+    margin-bottom: 12px;
+}
+
+.hint-text.show,
+.login-error.show {
+    display: block;
+}
+
+#login-button {
+    width: 100%;
+    height: 42px;
+
+    border: 0;
+
+    background: #d8d8d8;
+
+    color: #888888;
+
+    font-size: 0.9rem;
+
+    cursor: default;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.15s ease;
+}
+
+#login-button.enabled {
+    background: #111111;
+
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+#login-button.enabled:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================================
+   WELCOME + PASSWORD
+========================================================= */
+
+.welcome-screen,
+.password-screen {
+    z-index: 4;
+
+    opacity: 0;
+
+    transform: translateY(100px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+    background: #d6d6d6;
+}
+
+.welcome-screen.show,
+.password-screen.show {
+    opacity: 1;
+
+    transform: none;
+
+    pointer-events: auto;
+}
+
+.welcome-screen.hide {
+    opacity: 0;
+
+    transform: translateY(-90px);
+
+    pointer-events: none;
+}
+
+.welcome-content,
+.password-content {
+    text-align: center;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome-screen {
+    font-family:
+        "Quicksand",
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.welcome-content {
+    animation:
+        welcome-in
+        0.9s
+        ease
+        both;
+}
+
+.welcome-content h1 {
+    font-size: 2rem;
+
+    font-weight: 400;
+
+    margin-bottom: 18px;
+}
+
+.welcome-content p {
+    font-size: 0.95rem;
+
+    opacity: 0.7;
+}
+
+@keyframes welcome-in {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   NUMERICAL PASSWORD
+========================================================= */
+
+.password-content h1,
+.password-content .hint {
+    font-weight: 400;
+
+    color: #c98292;
+}
+
+.password-content h1 {
+    font-size: 1.8rem;
+
+    margin-bottom: 10px;
+}
+
+.password-content .hint {
+    font-size: 0.9rem;
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================================================
+   PASSWORD DOTS
+========================================================= */
+
+.passcode-dots {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 40px;
+}
+
+.dot {
+    flex: 0 0 10px;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #b8a6aa;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.dot.filled {
+    background: #ffffff;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   KEYPAD
+========================================================= */
+
+.keypad {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 72px);
+
+    justify-content: center;
+
+    gap: 14px;
+}
+
+.number-button,
+.backspace-button {
+    width: 72px;
+    height: 72px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.12s ease,
+        background 0.15s ease;
+}
+
+.number-button:hover,
+.backspace-button:hover {
+    background: #fafafa;
+}
+
+.number-button:active,
+.backspace-button:active {
+    transform: scale(0.92);
+}
+
+
+/* =========================================================
+   FLOWER SHOWER
+========================================================= */
+
+.celebration {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    will-change: transform;
+}
+
+.celebration-item {
+    position: absolute;
+
+    top: -150px;
+
+    line-height: 0.75;
+
+    user-select: none;
+
+    will-change:
+        transform,
+        opacity;
+
+    animation:
+        smooth-fall
+        linear
+        forwards;
+}
+
+@keyframes smooth-fall {
+    to {
+        transform:
+            translate3d(
+                var(--drift),
+                120vh,
+                0
+            )
+            rotate(var(--rotation));
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PUZZLE SCREEN
+========================================================= */
+
+.puzzle-screen {
+    z-index: 20;
+
+    display: none;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f9dde3 0%,
+            #f6d5dc 55%,
+            #f1cbd4 100%
+        );
+}
+
+.puzzle-screen.show {
+    display: block;
+}
+
+
+/* =========================================================
+   FINAL PUZZLE EXIT
+========================================================= */
+
+.puzzle-screen.final-exit {
+    animation:
+        puzzle-final-exit
+        0.9s
+        cubic-bezier(
+            0.55,
+            0,
+            0.85,
+            0.2
+        )
+        forwards;
+}
+
+@keyframes puzzle-final-exit {
+    to {
+        opacity: 0;
+        transform: translateY(-35px);
+    }
+}
+
+
+/* =========================================================
+   PUZZLE TRACK
+========================================================= */
+
+.puzzle-track {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    will-change: transform;
+
+    transition:
+        transform 0.72s
+        cubic-bezier(
+            0.25,
+            0.8,
+            0.25,
+            1
+        );
+}
+
+
+/* =========================================================
+   PUZZLE STAGE
+========================================================= */
+
+.puzzle-stage {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.puzzle-stage.next {
+    transform:
+        translateY(100vh);
+}
+
+
+/* =========================================================
+PUZZLE BACKGROUND FLOWERS
+========================================================= */
+
+.puzzle-flower-layer {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+.puzzle-flower {
+    position: absolute;
+
+    width: var(--flower-size);
+    height: var(--flower-size);
+
+    opacity: var(--opacity);
+
+    user-select: none;
+
+    animation:
+        flower-drift
+        var(--duration)
+        ease-in-out
+        infinite
+        alternate;
+
+    animation-delay: var(--delay);
+}
+
+
+/* =========================================================
+CUSTOM FLOWERS
+========================================================= */
+
+.custom-flower {
+    position: relative;
+
+    display: block;
+
+    width: var(--flower-size, var(--item-size));
+    height: var(--flower-size, var(--item-size));
+
+    flex-shrink: 0;
+
+    transform-origin: center;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+FLOWER PETALS
+========================================================= */
+
+.flower-petal {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 48%;
+    height: 48%;
+
+    border-radius: 50% 50% 48% 48%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(
+            calc(
+                var(--petal-index) * 60deg
+            )
+        )
+        translateY(-31%);
+
+    transform-origin: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 100%,
+            var(--petal-inner) 0%,
+            var(--petal-middle) 48%,
+            var(--petal-outer) 100%
+        );
+}
+
+
+/* =========================================================
+FLOWER CENTRE
+========================================================= */
+
+.flower-center {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 25%;
+    height: 25%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #f6c84a 0%,
+            #e9ad32 70%,
+            #d99822 100%
+        );
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+FLOWER COLOUR VARIANTS
+========================================================= */
+
+/* 1 — Pink inside → white outer edge */
+
+.flower-variant-1 {
+    --petal-inner: #f3a9bd;
+    --petal-middle: #f8c9d5;
+    --petal-outer: #fffafa;
+}
+
+
+/* 2 — White inside → pink outer edge */
+
+.flower-variant-2 {
+    --petal-inner: #fffafa;
+    --petal-middle: #f8dce4;
+    --petal-outer: #f3a9bd;
+}
+
+
+/* 3 — Pink inside → maroon outer edge */
+
+.flower-variant-3 {
+    --petal-inner: #f3a9bd;
+    --petal-middle: #d98299;
+    --petal-outer: #741f3b;
+}
+
+
+/* 4 — Maroon inside → pink outer edge */
+
+.flower-variant-4 {
+    --petal-inner: #741f3b;
+    --petal-middle: #d98299;
+    --petal-outer: #f3a9bd;
+}
+
+/* =========================================================
+CUSTOM HEART
+========================================================= */
+
+.custom-heart {
+    position: relative;
+
+    display: block;
+
+    width: var(--item-size);
+    height: var(--item-size);
+
+    flex-shrink: 0;
+
+    transform-origin: center;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+HEART PARTS
+========================================================= */
+
+.heart-left,
+.heart-right {
+    position: absolute;
+
+    top: 12%;
+
+    width: 52%;
+    height: 52%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3a9bd 0%,
+            #d98299 55%,
+            #741f3b 100%
+        );
+
+    border-radius: 50%;
+}
+
+
+.heart-left {
+    left: 4%;
+
+    transform:
+        rotate(-45deg);
+}
+
+
+.heart-right {
+    right: 4%;
+
+    transform:
+        rotate(45deg);
+}
+
+
+.heart-point {
+    position: absolute;
+
+    left: 50%;
+    top: 34%;
+
+    width: 65%;
+    height: 65%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3a9bd 0%,
+            #d98299 55%,
+            #741f3b 100%
+        );
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+
+    border-radius:
+        0 0 12% 0;
+
+    z-index: -1;
+}
+
+/* =========================================================
+PUZZLE FLOWER DRIFT
+========================================================= */
+
+@keyframes flower-drift {
+
+    0% {
+        transform:
+            translate3d(
+                -14px,
+                -10px,
+                0
+            )
+            rotate(-8deg);
+    }
+
+    100% {
+        transform:
+            translate3d(
+                18px,
+                20px,
+                0
+            )
+            rotate(9deg);
+    }
+
+}
+
+/* =========================================================
+   PUZZLE CONTENT
+========================================================= */
+
+.puzzle-content {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    padding:
+        75px
+        30px
+        35px;
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    max-height: 100vh;
+}
+
+
+/* =========================================================
+   PUZZLE TITLE
+========================================================= */
+
+#puzzle-title {
+    color: #6b4438;
+
+    font-size: 1.1rem;
+
+    line-height: 1.35;
+
+    font-weight: 400;
+
+    margin:
+        0
+        0
+        10px;
+}
+
+
+/* =========================================================
+   PUZZLE INSTRUCTION
+========================================================= */
+
+#puzzle-instruction {
+    margin:
+        0
+        0
+        20px;
+
+    color: #8b6258;
+
+    font-size: 0.72rem;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   PUZZLE BOARD
+========================================================= */
+
+.puzzle-board {
+    position: relative;
+
+    display: grid;
+
+    margin: 0 auto;
+
+    padding: 6px;
+
+    background: #ffffff;
+
+    border: 0;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            120,
+            70,
+            80,
+            0.1
+        );
+
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   PUZZLE TILE
+========================================================= */
+
+.puzzle-tile {
+    position: relative;
+
+    min-width: 0;
+    min-height: 0;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+    background-repeat: no-repeat;
+
+    background-size:
+        var(--image-width)
+        var(--image-height);
+
+    background-position:
+        var(--image-x)
+        var(--image-y);
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.puzzle-tile:hover {
+    filter: brightness(1.025);
+}
+
+
+/* =========================================================
+   ROUNDED IMAGE CORNERS
+========================================================= */
+
+.puzzle-tile:first-child {
+    border-top-left-radius: 10px;
+}
+
+.puzzle-board[data-columns="2"]
+.puzzle-tile:nth-child(2),
+
+.puzzle-board[data-columns="3"]
+.puzzle-tile:nth-child(3) {
+    border-top-right-radius: 10px;
+}
+
+.puzzle-board[data-columns="1"]
+.puzzle-tile:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.puzzle-board[data-columns="1"]
+.puzzle-tile:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.puzzle-board[data-columns="2"]
+.puzzle-tile:nth-last-child(2),
+
+.puzzle-board[data-columns="3"]
+.puzzle-tile:nth-last-child(3) {
+    border-bottom-left-radius: 10px;
+}
+
+.puzzle-board[data-columns="2"]
+.puzzle-tile:last-child,
+
+.puzzle-board[data-columns="3"]
+.puzzle-tile:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+
+/* =========================================================
+   INTERNAL TILE DIVIDER
+========================================================= */
+
+.puzzle-tile::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    inset: 0;
+
+    box-shadow:
+        inset -1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.9
+        ),
+
+        inset 0 -1px
+        rgba(
+            255,
+            255,
+            255,
+            0.9
+        );
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+/* =========================================================
+   SELECTED TILE
+========================================================= */
+
+.puzzle-tile.selected {
+    transform:
+        scale(0.96);
+
+    box-shadow:
+        inset 0 0 0 4px
+        rgba(
+            139,
+            98,
+            88,
+            0.35
+        );
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   SOLVED PUZZLE
+========================================================= */
+
+.puzzle-complete {
+    animation:
+        puzzle-pulse
+        0.65s
+        ease;
+
+    box-shadow:
+        0 10px 35px
+        rgba(
+            120,
+            70,
+            80,
+            0.16
+        );
+}
+
+.puzzle-complete .puzzle-tile::after {
+    opacity: 0;
+}
+
+.puzzle-complete .puzzle-tile {
+    cursor: default;
+}
+
+
+/* =========================================================
+   PUZZLE PULSE
+========================================================= */
+
+@keyframes puzzle-pulse {
+    45% {
+        transform:
+            scale(1.035);
+    }
+}
+
+
+/* =========================================================
+   CONTINUE
+========================================================= */
+
+.puzzle-continue {
+    margin-top: 18px;
+
+    color: #6b4438;
+
+    font-size: 0.75rem;
+
+    opacity: 0;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    pointer-events: none;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.puzzle-continue.show {
+    opacity: 1;
+
+    transform: none;
+
+    pointer-events: auto;
+}
+
+.puzzle-continue:hover {
+    text-decoration: underline;
+}
+
+.puzzle-continue.final-surprise {
+    font-size: 0.8rem;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   SURPRISE SCREEN
+========================================================= */
+
+.surprise-screen {
+    z-index: 25;
+
+    display: none;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f4e8d1 0%,
+            #dfcba8 100%
+        );
+
+    opacity: 0;
+}
+
+.surprise-screen.show {
+    display: flex;
+
+    animation:
+        surprise-screen-in
+        0.8s
+        ease
+        forwards;
+}
+
+.surprise-screen.hide {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.7s ease;
+}
+
+@keyframes surprise-screen-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   SURPRISE CONTENT
+========================================================= */
+
+.surprise-content {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   SURPRISE PAPER
+========================================================= */
+
+.surprise-paper {
+    position: relative;
+
+    width: min(430px, 78vw);
+    height: min(310px, 55vh);
+
+    border: 0;
+
+    padding: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    /*
+       IMPORTANT:
+       The paper is now visible before clicking.
+    */
+    transform:
+        translateY(0)
+        rotate(-3deg)
+        scale(0.88);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(
+            0 18px 25px
+            rgba(
+                70,
+                45,
+                25,
+                0.22
+            )
+        );
+
+    transform-origin: center;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   PAPER HOVER
+========================================================= */
+
+.surprise-paper:hover {
+    transform:
+        translateY(-3px)
+        rotate(-3deg)
+        scale(0.9);
+}
+
+
+/* =========================================================
+   PAPER FACE
+========================================================= */
+
+.paper-face {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5e5c4 0%,
+            #ead3a8 48%,
+            #f1dfbd 100%
+        );
+
+    border: 1px solid
+        rgba(
+            100,
+            70,
+            35,
+            0.15
+        );
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(
+            80,
+            50,
+            25,
+            0.1
+        );
+}
+
+
+/* =========================================================
+   PAPER TEXTURE
+========================================================= */
+
+.paper-face::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    background-image:
+        radial-gradient(
+            rgba(
+                100,
+                70,
+                40,
+                0.16
+            ) 0.6px,
+            transparent 0.8px
+        );
+
+    background-size:
+        6px 6px;
+}
+
+
+/* =========================================================
+   PAPER FOLDS
+========================================================= */
+
+.paper-fold {
+    position: absolute;
+
+    z-index: 5;
+
+    width: 0;
+    height: 0;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.8s ease;
+}
+
+.paper-fold-top {
+    top: 0;
+    left: 0;
+
+    border-top:
+        75px solid
+        rgba(
+            205,
+            176,
+            128,
+            0.65
+        );
+
+    border-right:
+        75px solid transparent;
+}
+
+.paper-fold-bottom {
+    bottom: 0;
+    right: 0;
+
+    border-bottom:
+        75px solid
+        rgba(
+            205,
+            176,
+            128,
+            0.55
+        );
+
+    border-left:
+        75px solid transparent;
+}
+
+
+/* =========================================================
+   PAPER TEXT
+========================================================= */
+
+.paper-text {
+    position: relative;
+
+    z-index: 6;
+
+    color: #76543c;
+
+    font-family:
+        "Montserrat",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 1.05rem;
+
+    letter-spacing: 0.08em;
+
+    text-transform: lowercase;
+
+    text-shadow:
+        0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SURPRISE PAPER OPENING
+   STOP-MOTION UNFOLD
+========================================================= */
+
+.surprise-paper.opening {
+    cursor: default;
+
+    pointer-events: none;
+
+    animation:
+        paper-unfold-stopmotion
+        1.8s
+        steps(1, end)
+        forwards;
+}
+
+
+/* =========================================================
+   STOP-MOTION UNFOLD ANIMATION
+========================================================= */
+
+@keyframes paper-unfold-stopmotion {
+
+    /* Folded */
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            rotateX(0deg)
+            scaleX(1)
+            scaleY(1);
+
+        opacity: 1;
+    }
+
+    /* Small movement to the right */
+    12% {
+        transform:
+            translateY(-4px)
+            rotate(5deg)
+            rotateX(8deg)
+            scaleX(1.02)
+            scaleY(0.82);
+
+        opacity: 1;
+    }
+
+    /* Small movement to the left */
+    24% {
+        transform:
+            translateY(-2px)
+            rotate(-6deg)
+            rotateX(-7deg)
+            scaleX(1.04)
+            scaleY(0.72);
+
+        opacity: 1;
+    }
+
+    /* Unfold further — right */
+    36% {
+        transform:
+            translateY(3px)
+            rotate(7deg)
+            rotateX(10deg)
+            scaleX(1.06)
+            scaleY(0.62);
+
+        opacity: 1;
+    }
+
+    /* Unfold further — left */
+    48% {
+        transform:
+            translateY(0)
+            rotate(-7deg)
+            rotateX(-9deg)
+            scaleX(1.08)
+            scaleY(0.55);
+
+        opacity: 1;
+    }
+
+    /* Opening back toward center — right */
+    60% {
+        transform:
+            translateY(2px)
+            rotate(5deg)
+            rotateX(6deg)
+            scaleX(1.06)
+            scaleY(0.72);
+
+        opacity: 1;
+    }
+
+    /* Almost open — left */
+    72% {
+        transform:
+            translateY(0)
+            rotate(-4deg)
+            rotateX(-4deg)
+            scaleX(1.03)
+            scaleY(0.88);
+
+        opacity: 1;
+    }
+
+    /* Final little movement */
+    84% {
+        transform:
+            translateY(0)
+            rotate(2deg)
+            rotateX(2deg)
+            scaleX(1.01)
+            scaleY(0.97);
+
+        opacity: 1;
+    }
+
+    /* Fully unfolded */
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            rotateX(0deg)
+            scaleX(1)
+            scaleY(1);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   LETTER SCREEN
+========================================================= */
+
+.letter-screen {
+    z-index: 30;
+
+    display: none;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #eee2c9 0%,
+            #d8c8a7 100%
+        );
+
+    opacity: 0;
+}
+
+.letter-screen.show {
+    display: flex;
+
+    animation:
+        letter-screen-in
+        0.9s
+        ease
+        forwards;
+}
+
+@keyframes letter-screen-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   LETTER SCENE
+========================================================= */
+
+.letter-scene {
+    position: relative;
+
+    width: min(88vw, 900px);
+
+    height: min(82vh, 720px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    perspective: 1400px;
+}
+
+
+/* =========================================================
+   LETTER PAPER
+========================================================= */
+
+.letter-paper {
+    position: relative;
+
+    width: min(78vw, 760px);
+
+    height: min(74vh, 650px);
+
+    overflow: hidden;
+
+    background-color: #e8d7b5;
+
+    background-image:
+        linear-gradient(
+            rgba(
+                255,
+                248,
+                224,
+                0.16
+            ),
+            rgba(
+                255,
+                248,
+                224,
+                0.16
+            )
+        );
+
+    color: #4f382d;
+
+    box-shadow:
+        0 18px 35px
+        rgba(
+            70,
+            45,
+            30,
+            0.24
+        ),
+
+        0 3px 7px
+        rgba(
+            70,
+            45,
+            30,
+            0.18
+        );
+
+    transform-style: preserve-3d;
+
+    transform:
+        rotateY(-7deg)
+        rotateX(1deg)
+        scaleX(0.82);
+
+    transition:
+        transform 1.8s
+        cubic-bezier(
+            0.2,
+            0.75,
+            0.25,
+            1
+        );
+
+    transform-origin:
+        center center;
+}
+
+
+/* =========================================================
+   PAPER AGED EDGES
+========================================================= */
+
+.letter-paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(
+                80,
+                50,
+                30,
+                0.13
+            ),
+            transparent 4%,
+            transparent 96%,
+            rgba(
+                80,
+                50,
+                30,
+                0.13
+            )
+        ),
+
+        linear-gradient(
+            to bottom,
+            rgba(
+                80,
+                50,
+                30,
+                0.10
+            ),
+            transparent 5%,
+            transparent 95%,
+            rgba(
+                80,
+                50,
+                30,
+                0.13
+            )
+        );
+
+    mix-blend-mode: multiply;
+}
+
+
+/* =========================================================
+   PAPER TEXTURE
+========================================================= */
+
+.letter-paper::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    opacity: 0.14;
+
+    background-image:
+        radial-gradient(
+            rgba(
+                75,
+                48,
+                30,
+                0.18
+            ) 0.7px,
+            transparent 0.8px
+        );
+
+    background-size:
+        5px 5px;
+
+    mix-blend-mode: multiply;
+}
+
+
+/* =========================================================
+   LETTER DATE
+========================================================= */
+
+.letter-date {
+    position: relative;
+
+    z-index: 5;
+
+    padding:
+        24px
+        34px
+        0;
+
+    text-align: right;
+
+    color: #604236;
+
+    font-family:
+        Garamond,
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.9rem;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   LETTER LINE
+========================================================= */
+
+.letter-line {
+    position: relative;
+
+    z-index: 5;
+
+    height: 1px;
+
+    margin:
+        12px
+        34px
+        0;
+
+    background:
+        rgba(
+            89,
+            60,
+            47,
+            0.35
+        );
+}
+
+
+/* =========================================================
+   LETTER BODY
+========================================================= */
+
+.letter-body {
+    position: relative;
+
+    z-index: 5;
+
+    height:
+        calc(
+            100% - 72px
+        );
+
+    overflow-y: auto;
+
+    padding:
+        18px
+        42px
+        55px;
+
+    color: #50382e;
+
+    font-family:
+        Garamond,
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.08rem;
+
+    line-height: 1.75;
+
+    letter-spacing: 0.015em;
+
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 30px,
+            rgba(
+                89,
+                60,
+                47,
+                0.12
+            ) 30px,
+            rgba(
+                89,
+                60,
+                47,
+                0.12
+            ) 31px
+        );
+
+    background-position:
+        0 7px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(
+            89,
+            60,
+            47,
+            0.25
+        )
+        transparent;
+}
+
+
+/* =========================================================
+   LETTER PARTS
+========================================================= */
+
+.letter-part {
+    position: relative;
+
+    margin: 0 0 28px;
+}
+
+.letter-part p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   FIRST LETTER PART
+========================================================= */
+
+.letter-part:first-child p {
+    font-size: 1.18rem;
+}
+
+
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+.letter-signature {
+    margin-top: 38px;
+
+    padding-bottom: 45px;
+
+    font-size: 1.1rem;
+}
+
+.letter-signature p {
+    margin-bottom: 3px;
+}
+
+
+/* =========================================================
+   LETTER SCROLLBAR
+========================================================= */
+
+.letter-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.letter-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.letter-body::-webkit-scrollbar-thumb {
+    background:
+        rgba(
+            89,
+            60,
+            47,
+            0.25
+        );
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   LETTER OPEN STATE
+========================================================= */
+
+.letter-paper.letter-open {
+    transform:
+        rotateY(0deg)
+        rotateX(0deg)
+        scaleX(1);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .keypad {
+        grid-template-columns:
+            repeat(3, 64px);
+
+        gap: 11px;
+    }
+
+    .number-button,
+    .backspace-button {
+        width: 64px;
+        height: 64px;
+    }
+
+    .surprise-paper {
+        width: 82vw;
+        height: 58vw;
+    }
+
+    .paper-fold-top,
+    .paper-fold-bottom {
+        border-width: 58px;
+    }
+
+    .letter-paper {
+        width: 92vw;
+
+        height: 82vh;
+
+        transform:
+            rotateY(-3deg)
+            rotateX(1deg)
+            scaleX(0.94);
+    }
+
+    .letter-body {
+        padding:
+            16px
+            24px
+            45px;
+
+        font-size: 1rem;
+
+        line-height: 1.7;
+    }
+
+    .letter-part:first-child p {
+        font-size: 1.08rem;
+    }
+
+    .letter-date {
+        padding:
+            20px
+            24px
+            0;
+    }
+
+    .letter-line {
+        margin:
+            10px
+            24px
+            0;
+    }
+}
