@@ -234,80 +234,101 @@ input {
 
 
 /* =========================================================
-   WELCOME
-========================================================= */
-
-.welcome-screen {
-    font-family:
-        "Quicksand",
-        Arial,
-        Helvetica,
-        sans-serif;
-}
-
-.welcome-content {
-    animation:
-        welcome-in
-        0.9s
-        ease
-        both;
-}
-
-.welcome-content h1 {
-    font-size: 2rem;
-
-    font-weight: 400;
-
-    margin-bottom: 18px;
-}
-
-.welcome-content p {
-    font-size: 0.95rem;
-
-    opacity: 0.7;
-}
-
-@keyframes welcome-in {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-
-/* =========================================================
-NUMERICAL PASSWORD
-========================================================= */
+   NUMERICAL PASSWORD
+   ========================================================= */
 
 .password-content {
     position: relative;
     text-align: center;
 }
 
-.password-content h1,
-.password-content .hint {
-    font-weight: 400;
-    color: #c98292;
-}
-
 .password-content h1 {
     font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-weight: 400;
+    color: #c98292;
+
+    margin-bottom: 6px;
 }
 
-.password-content .hint {
-    font-size: 0.9rem;
-    margin-bottom: 32px;
-}
 
 /* =========================================================
-PASSWORD DOTS
-========================================================= */
+   NUMERICAL HINT BUTTON
+   ========================================================= */
+
+#numerical-hint {
+    display: block;
+
+    position: relative;
+
+    margin: 0 auto 42px auto;
+    padding: 0 !important;
+
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1.4;
+
+    color: #c98292;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#numerical-hint:hover {
+    color: #b96f82;
+}
+
+
+/* =========================================================
+   ACTUAL HINT TEXT
+   ========================================================= */
+
+#numerical-hint-text {
+    position: absolute;
+
+    /*
+       This places the sentence in the empty space
+       between the hint button and the password dots.
+    */
+    top: 55px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: max-content;
+    max-width: 90%;
+
+    display: none;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: inherit;
+    font-size: 10px;
+    line-height: 1.3;
+
+    color: #c98292;
+
+    pointer-events: none;
+}
+
+#numerical-hint-text.show {
+    display: block;
+}
+
+
+/* =========================================================
+   PASSWORD DOTS
+   ========================================================= */
 
 .passcode-dots {
     width: 100%;
@@ -339,83 +360,9 @@ PASSWORD DOTS
 
 .dot.filled {
     background: #ffffff;
+
     transform: scale(1.08);
 }
-
-/* =========================================================
-NUMERICAL PASSWORD HINT
-========================================================= */
-
-#numerical-hint {
-    display: inline-block;
-
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-
-    padding: 0 !important;
-
-    margin: 0 0 32px 0 !important;
-
-    font-family: inherit;
-
-    font-size: 11px;
-    line-height: 1.4;
-
-    color: #c98292;
-
-    text-decoration: underline;
-
-    cursor: pointer;
-
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-#numerical-hint:hover {
-    color: #b96f82;
-}
-
-/* =========================================================
-ACTUAL HINT TEXT
-========================================================= */
-
-#numerical-hint-text {
-    position: absolute;
-
-    left: 50%;
-
-    /*
-    This is deliberately positioned BELOW the
-    "hint" button and ABOVE the password dots.
-    */
-    top: 76px;
-
-    transform: translateX(-50%);
-
-    width: max-content;
-    max-width: 90%;
-
-    display: none;
-
-    margin: 0;
-    padding: 0;
-
-    font-family: inherit;
-
-    font-size: 0.6rem;
-    line-height: 1.3;
-
-    color: #c98292;
-
-    pointer-events: none;
-}
-
-#numerical-hint-text.show {
-    display: block;
-}
-
 
 /* =========================================================
    KEYPAD
