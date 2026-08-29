@@ -1825,6 +1825,22 @@ window.addEventListener(
                 currentPuzzleState
             );
 
+           const numericalHint =
+    document.getElementById("numerical-hint");
+
+const numericalHintText =
+    document.getElementById("numerical-hint-text");
+
+if (numericalHint && numericalHintText) {
+
+    numericalHint.addEventListener("click", () => {
+
+        numericalHintText.classList.toggle("show");
+
+    });
+
+}
+
         }
 
     }
