@@ -98,7 +98,7 @@ const puzzles = [
         title:
             "From Me and You to Us",
         instruction:
-            "And we became two people, and one little world of our own. A little world filled with our jokes, our moments, our chaos, and everything in between. Somewhere in that little world, I found a version of myself that only seemed to exist with you."
+            "And we became two people, and one little world of our own, Filled with our jokes, our moments, our chaos, and everything in between. Somewhere in that world, I found a version of myself that only seemed to exist with you."
     },
 
     {
