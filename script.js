@@ -1825,7 +1825,7 @@ window.addEventListener(
                 currentPuzzleState
             );
 
-           const numericalHint =
+      const numericalHint =
     document.getElementById("numerical-hint");
 
 const numericalHintText =
@@ -1833,7 +1833,7 @@ const numericalHintText =
 
 if (numericalHint && numericalHintText) {
 
-    numericalHint.addEventListener("click", () => {
+    numericalHint.addEventListener("click", function () {
 
         numericalHintText.classList.toggle("show");
 
