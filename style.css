@@ -1,5 +1,5 @@
 /* =========================================================
-   RESET
+RESET
 ========================================================= */
 
 * {
@@ -27,9 +27,8 @@ input {
     font: inherit;
 }
 
-
 /* =========================================================
-   GENERAL SCREENS
+GENERAL SCREENS
 ========================================================= */
 
 .screen {
@@ -44,9 +43,8 @@ input {
     justify-content: center;
 }
 
-
 /* =========================================================
-   LOGIN
+LOGIN
 ========================================================= */
 
 .login-screen {
@@ -188,9 +186,8 @@ input {
     transform: scale(0.98);
 }
 
-
 /* =========================================================
-   WELCOME + PASSWORD
+WELCOME + PASSWORD
 ========================================================= */
 
 .welcome-screen,
@@ -232,9 +229,61 @@ input {
     text-align: center;
 }
 
+/* =========================================================
+WELCOME
+========================================================= */
+
+/*
+   RESTORED:
+   The Welcome screen previously used Quicksand.
+   This keeps "Welcome beautiful" and "tap to continue"
+   in Quicksand without changing the rest of the site.
+*/
+
+.welcome-screen {
+    font-family:
+        "Quicksand",
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.welcome-content {
+    animation:
+        welcome-in
+        0.9s
+        ease
+        both;
+}
+
+.welcome-content h1 {
+    font-size: 2rem;
+
+    font-weight: 400;
+
+    margin-bottom: 18px;
+}
+
+.welcome-content p {
+    font-size: 0.95rem;
+
+    opacity: 0.7;
+}
+
+@keyframes welcome-in {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
 
 /* =========================================================
-   NUMERICAL PASSWORD
+NUMERICAL PASSWORD
 ========================================================= */
 
 .password-content {
@@ -244,14 +293,16 @@ input {
 
 .password-content h1 {
     font-size: 1.8rem;
+
     font-weight: 400;
+
     color: #c98292;
+
     margin: 0 0 8px 0;
 }
 
-
 /* =========================================================
-   NUMERICAL PASSWORD HINT BUTTON
+NUMERICAL PASSWORD HINT BUTTON
 ========================================================= */
 
 #numerical-hint {
@@ -263,11 +314,15 @@ input {
     outline: none !important;
 
     padding: 0 !important;
+
     margin: 0 auto 0 auto !important;
 
     font-family: inherit;
+
     font-size: 11px;
+
     line-height: 1.4;
+
     font-weight: 400;
 
     color: #c98292;
@@ -284,9 +339,8 @@ input {
     color: #b96f82;
 }
 
-
 /* =========================================================
-   ACTUAL HINT TEXT
+ACTUAL HINT TEXT
 ========================================================= */
 
 #numerical-hint-text {
@@ -295,6 +349,7 @@ input {
        It is visually placed between the hint
        and the password dots.
     */
+
     position: absolute;
 
     left: 50%;
@@ -303,6 +358,7 @@ input {
        This controls ONLY the vertical position
        of "the day we met (obv)".
     */
+
     top: 62px;
 
     transform: translateX(-50%);
@@ -316,8 +372,11 @@ input {
     display: none;
 
     font-family: inherit;
+
     font-size: 9px;
+
     font-weight: 400;
+
     line-height: 1.3;
 
     color: #c98292;
@@ -329,9 +388,8 @@ input {
     display: block;
 }
 
-
 /* =========================================================
-   PASSWORD DOTS
+PASSWORD DOTS
 ========================================================= */
 
 .passcode-dots {
@@ -348,7 +406,9 @@ input {
        Space between the hint area and circles.
        This DOES NOT change when the actual hint appears.
     */
+
     margin-top: 32px;
+
     margin-bottom: 40px;
 }
 
@@ -369,11 +429,12 @@ input {
 
 .dot.filled {
     background: #ffffff;
+
     transform: scale(1.08);
 }
 
 /* =========================================================
-   KEYPAD
+KEYPAD
 ========================================================= */
 
 .keypad {
@@ -419,9 +480,8 @@ input {
     transform: scale(0.92);
 }
 
-
 /* =========================================================
-   FLOWER SHOWER
+FLOWER SHOWER
 ========================================================= */
 
 .celebration {
@@ -471,9 +531,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   PUZZLE SCREEN
+PUZZLE SCREEN
 ========================================================= */
 
 .puzzle-screen {
@@ -496,9 +555,8 @@ input {
     display: block;
 }
 
-
 /* =========================================================
-   FINAL PUZZLE EXIT
+FINAL PUZZLE EXIT
 ========================================================= */
 
 .puzzle-screen.final-exit {
@@ -521,9 +579,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   PUZZLE TRACK
+PUZZLE TRACK
 ========================================================= */
 
 .puzzle-track {
@@ -548,9 +605,8 @@ input {
         );
 }
 
-
 /* =========================================================
-   PUZZLE STAGE
+PUZZLE STAGE
 ========================================================= */
 
 .puzzle-stage {
@@ -575,9 +631,8 @@ input {
         translateY(100vh);
 }
 
-
 /* =========================================================
-   PUZZLE BACKGROUND FLOWERS
+PUZZLE BACKGROUND FLOWERS
 ========================================================= */
 
 .puzzle-flower-layer {
@@ -612,9 +667,8 @@ input {
     animation-delay: var(--delay);
 }
 
-
 /* =========================================================
-   CUSTOM FLOWERS
+CUSTOM FLOWERS
 ========================================================= */
 
 .custom-flower {
@@ -641,9 +695,8 @@ input {
     pointer-events: none;
 }
 
-
 /* =========================================================
-   FLOWER PETALS
+FLOWER PETALS
 ========================================================= */
 
 .flower-petal {
@@ -678,9 +731,8 @@ input {
         );
 }
 
-
 /* =========================================================
-   FLOWER CENTRE
+FLOWER CENTRE
 ========================================================= */
 
 .flower-center {
@@ -708,9 +760,8 @@ input {
     z-index: 5;
 }
 
-
 /* =========================================================
-   FLOWER COLOUR VARIANTS
+FLOWER COLOUR VARIANTS
 ========================================================= */
 
 /* 1 — Pink inside → white outer edge */
@@ -721,7 +772,6 @@ input {
     --petal-outer: #fffafa;
 }
 
-
 /* 2 — White inside → pink outer edge */
 
 .flower-variant-2 {
@@ -729,7 +779,6 @@ input {
     --petal-middle: #f8dce4;
     --petal-outer: #f3a9bd;
 }
-
 
 /* 3 — Pink inside → maroon outer edge */
 
@@ -739,7 +788,6 @@ input {
     --petal-outer: #741f3b;
 }
 
-
 /* 4 — Maroon inside → pink outer edge */
 
 .flower-variant-4 {
@@ -748,9 +796,8 @@ input {
     --petal-outer: #f3a9bd;
 }
 
-
 /* =========================================================
-   CUSTOM HEART
+CUSTOM HEART
 ========================================================= */
 
 .custom-heart {
@@ -768,9 +815,8 @@ input {
     pointer-events: none;
 }
 
-
 /* =========================================================
-   HEART PARTS
+HEART PARTS
 ========================================================= */
 
 .heart-left,
@@ -834,9 +880,8 @@ input {
     z-index: -1;
 }
 
-
 /* =========================================================
-   PUZZLE FLOWER DRIFT
+PUZZLE FLOWER DRIFT
 ========================================================= */
 
 @keyframes flower-drift {
@@ -861,9 +906,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   PUZZLE CONTENT
+PUZZLE CONTENT
 ========================================================= */
 
 .puzzle-content {
@@ -891,9 +935,8 @@ input {
     max-height: 100vh;
 }
 
-
 /* =========================================================
-   PUZZLE TITLE
+PUZZLE TITLE
 ========================================================= */
 
 #puzzle-title {
@@ -911,9 +954,8 @@ input {
         10px;
 }
 
-
 /* =========================================================
-   PUZZLE INSTRUCTION
+PUZZLE INSTRUCTION
 ========================================================= */
 
 #puzzle-instruction {
@@ -929,9 +971,8 @@ input {
     line-height: 1.45;
 }
 
-
 /* =========================================================
-   PUZZLE BOARD
+PUZZLE BOARD
 ========================================================= */
 
 .puzzle-board {
@@ -965,9 +1006,8 @@ input {
         transform 0.25s ease;
 }
 
-
 /* =========================================================
-   PUZZLE TILE
+PUZZLE TILE
 ========================================================= */
 
 .puzzle-tile {
@@ -1010,9 +1050,8 @@ input {
     filter: brightness(1.025);
 }
 
-
 /* =========================================================
-   ROUNDED IMAGE CORNERS
+ROUNDED IMAGE CORNERS
 ========================================================= */
 
 .puzzle-tile:first-child {
@@ -1055,9 +1094,8 @@ input {
     border-bottom-right-radius: 10px;
 }
 
-
 /* =========================================================
-   INTERNAL TILE DIVIDER
+INTERNAL TILE DIVIDER
 ========================================================= */
 
 .puzzle-tile::after {
@@ -1092,9 +1130,8 @@ input {
         opacity 0.25s ease;
 }
 
-
 /* =========================================================
-   SELECTED TILE
+SELECTED TILE
 ========================================================= */
 
 .puzzle-tile.selected {
@@ -1113,9 +1150,8 @@ input {
     z-index: 3;
 }
 
-
 /* =========================================================
-   SOLVED PUZZLE
+SOLVED PUZZLE
 ========================================================= */
 
 .puzzle-complete {
@@ -1142,9 +1178,8 @@ input {
     cursor: default;
 }
 
-
 /* =========================================================
-   PUZZLE PULSE
+PUZZLE PULSE
 ========================================================= */
 
 @keyframes puzzle-pulse {
@@ -1154,9 +1189,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   CONTINUE
+CONTINUE
 ========================================================= */
 
 .puzzle-continue {
@@ -1200,9 +1234,8 @@ input {
     margin-top: 20px;
 }
 
-
 /* =========================================================
-   SURPRISE SCREEN
+SURPRISE SCREEN
 ========================================================= */
 
 .surprise-screen {
@@ -1251,9 +1284,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   SURPRISE CONTENT
+SURPRISE CONTENT
 ========================================================= */
 
 .surprise-content {
@@ -1268,9 +1300,8 @@ input {
     justify-content: center;
 }
 
-
 /* =========================================================
-   SURPRISE PAPER
+SURPRISE PAPER
 ========================================================= */
 
 .surprise-paper {
@@ -1311,9 +1342,8 @@ input {
         transform 0.25s ease;
 }
 
-
 /* =========================================================
-   PAPER HOVER
+PAPER HOVER
 ========================================================= */
 
 .surprise-paper:hover {
@@ -1323,9 +1353,8 @@ input {
         scale(0.9);
 }
 
-
 /* =========================================================
-   PAPER FACE
+PAPER FACE
 ========================================================= */
 
 .paper-face {
@@ -1366,9 +1395,8 @@ input {
         );
 }
 
-
 /* =========================================================
-   PAPER TEXTURE
+PAPER TEXTURE
 ========================================================= */
 
 .paper-face::after {
@@ -1397,9 +1425,8 @@ input {
         6px 6px;
 }
 
-
 /* =========================================================
-   PAPER FOLDS
+PAPER FOLDS
 ========================================================= */
 
 .paper-fold {
@@ -1451,9 +1478,8 @@ input {
         75px solid transparent;
 }
 
-
 /* =========================================================
-   PAPER TEXT
+PAPER TEXT
 ========================================================= */
 
 .paper-text {
@@ -1487,9 +1513,8 @@ input {
     pointer-events: none;
 }
 
-
 /* =========================================================
-   SURPRISE PAPER OPENING
+SURPRISE PAPER OPENING
 ========================================================= */
 
 .surprise-paper.opening {
@@ -1504,14 +1529,14 @@ input {
         forwards;
 }
 
-
 /* =========================================================
-   STOP-MOTION UNFOLD ANIMATION
+STOP-MOTION UNFOLD ANIMATION
 ========================================================= */
 
 @keyframes paper-unfold-stopmotion {
 
     /* Folded */
+
     0% {
         transform:
             translateY(0)
@@ -1524,6 +1549,7 @@ input {
     }
 
     /* Small movement to the right */
+
     12% {
         transform:
             translateY(-4px)
@@ -1536,6 +1562,7 @@ input {
     }
 
     /* Small movement to the left */
+
     24% {
         transform:
             translateY(-2px)
@@ -1548,6 +1575,7 @@ input {
     }
 
     /* Unfold further — right */
+
     36% {
         transform:
             translateY(3px)
@@ -1560,6 +1588,7 @@ input {
     }
 
     /* Unfold further — left */
+
     48% {
         transform:
             translateY(0)
@@ -1572,6 +1601,7 @@ input {
     }
 
     /* Opening back toward center — right */
+
     60% {
         transform:
             translateY(2px)
@@ -1584,6 +1614,7 @@ input {
     }
 
     /* Almost open — left */
+
     72% {
         transform:
             translateY(0)
@@ -1596,6 +1627,7 @@ input {
     }
 
     /* Final little movement */
+
     84% {
         transform:
             translateY(0)
@@ -1608,6 +1640,7 @@ input {
     }
 
     /* Fully unfolded */
+
     100% {
         transform:
             translateY(0)
@@ -1620,9 +1653,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   LETTER SCREEN
+LETTER SCREEN
 ========================================================= */
 
 .letter-screen {
@@ -1662,9 +1694,8 @@ input {
     }
 }
 
-
 /* =========================================================
-   LETTER SCENE
+LETTER SCENE
 ========================================================= */
 
 .letter-scene {
@@ -1682,9 +1713,8 @@ input {
     perspective: 1400px;
 }
 
-
 /* =========================================================
-   LETTER PAPER
+LETTER PAPER
 ========================================================= */
 
 .letter-paper {
@@ -1753,9 +1783,8 @@ input {
         center center;
 }
 
-
 /* =========================================================
-   PAPER AGED EDGES
+PAPER AGED EDGES
 ========================================================= */
 
 .letter-paper::before {
@@ -1809,9 +1838,8 @@ input {
     mix-blend-mode: multiply;
 }
 
-
 /* =========================================================
-   PAPER TEXTURE
+PAPER TEXTURE
 ========================================================= */
 
 .letter-paper::after {
@@ -1844,9 +1872,8 @@ input {
     mix-blend-mode: multiply;
 }
 
-
 /* =========================================================
-   LETTER DATE
+LETTER DATE
 ========================================================= */
 
 .letter-date {
@@ -1874,9 +1901,8 @@ input {
     letter-spacing: 0.04em;
 }
 
-
 /* =========================================================
-   LETTER LINE
+LETTER LINE
 ========================================================= */
 
 .letter-line {
@@ -1900,9 +1926,8 @@ input {
         );
 }
 
-
 /* =========================================================
-   LETTER BODY
+LETTER BODY
 ========================================================= */
 
 .letter-body {
@@ -1970,9 +1995,8 @@ input {
         transparent;
 }
 
-
 /* =========================================================
-   LETTER PARTS
+LETTER PARTS
 ========================================================= */
 
 .letter-part {
@@ -1985,18 +2009,16 @@ input {
     margin: 0;
 }
 
-
 /* =========================================================
-   FIRST LETTER PART
+FIRST LETTER PART
 ========================================================= */
 
 .letter-part:first-child p {
     font-size: 1.18rem;
 }
 
-
 /* =========================================================
-   SIGNATURE
+SIGNATURE
 ========================================================= */
 
 .letter-signature {
@@ -2011,9 +2033,8 @@ input {
     margin-bottom: 3px;
 }
 
-
 /* =========================================================
-   LETTER SCROLLBAR
+LETTER SCROLLBAR
 ========================================================= */
 
 .letter-body::-webkit-scrollbar {
@@ -2036,9 +2057,8 @@ input {
     border-radius: 10px;
 }
 
-
 /* =========================================================
-   LETTER OPEN STATE
+LETTER OPEN STATE
 ========================================================= */
 
 .letter-paper.letter-open {
@@ -2048,9 +2068,8 @@ input {
         scaleX(1);
 }
 
-
 /* =========================================================
-   MOBILE
+MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
