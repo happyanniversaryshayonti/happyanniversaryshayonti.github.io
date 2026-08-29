@@ -2099,3 +2099,12 @@ PUZZLE FLOWER DRIFT
     text-decoration: underline;
     cursor: pointer;
 }}
+
+
+#numerical-hint-text {
+    display: none;
+}
+
+#numerical-hint-text.show {
+    display: block;
+}
