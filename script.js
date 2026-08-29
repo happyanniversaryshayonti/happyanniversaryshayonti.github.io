@@ -1,6 +1,7 @@
 /* ================================
    SCREENS
 ================================ */
+
 const loginScreen =
     document.getElementById("login-screen");
 
@@ -26,6 +27,7 @@ const surpriseScreen =
 /* ================================
    LOGIN ELEMENTS
 ================================ */
+
 const usernameInput =
     document.getElementById("username");
 
@@ -48,16 +50,14 @@ const loginButton =
 /* ================================
    PUZZLE DATA
 ================================ */
+
 const puzzles = [
     {
         rows: 1,
         columns: 2,
-        image:
-            "image1.jpg",
-        ratio:
-            4 / 3,
-        title:
-            "The Spark of Noticing",
+        image: "image1.jpg",
+        ratio: 4 / 3,
+        title: "The Spark of Noticing",
         instruction:
             "It was somewhere between an ordinary day and everything that came after. It's honestly cute how something so small can become the beginning of everything.<br><br>(Tap two tiles to swap them.<br>Next one will come after the picture is complete.)"
     },
@@ -65,12 +65,9 @@ const puzzles = [
     {
         rows: 2,
         columns: 1,
-        image:
-            "image2.jpg",
-        ratio:
-            3 / 2,
-        title:
-            "The Pull of Connection",
+        image: "image2.jpg",
+        ratio: 3 / 2,
+        title: "The Pull of Connection",
         instruction:
             "And from the calls to the texts, from meaningless to deep conversations, there was always something that made me want to stay just a little bit longer."
     },
@@ -78,12 +75,9 @@ const puzzles = [
     {
         rows: 2,
         columns: 2,
-        image:
-            "image3.jpg",
-        ratio:
-            4 / 3,
-        title:
-            "The Walls Begin to Fall",
+        image: "image3.jpg",
+        ratio: 4 / 3,
+        title: "The Walls Begin to Fall",
         instruction:
             "And somewhere along the way, you became someone I could simply be beside. As if being close to you started feeling like home."
     },
@@ -91,12 +85,9 @@ const puzzles = [
     {
         rows: 2,
         columns: 2,
-        image:
-            "image4.jpg",
-        ratio:
-            4 / 3,
-        title:
-            "From Me and You to Us",
+        image: "image4.jpg",
+        ratio: 4 / 3,
+        title: "From Me and You to Us",
         instruction:
             "And we became two people, and one little world of our own, filled with our jokes, our moments, our chaos, and everything in between. Somewhere in that world, I found a version of myself that only seemed to exist with you."
     },
@@ -104,12 +95,9 @@ const puzzles = [
     {
         rows: 2,
         columns: 3,
-        image:
-            "image5.jpg",
-        ratio:
-            3429 / 1769,
-        title:
-            "The Choice",
+        image: "image5.jpg",
+        ratio: 3429 / 1769,
+        title: "The Choice",
         instruction:
             "Because some things are meant to be chosen, again and again. And loving you has never been something I wanted to leave to chance."
     },
@@ -117,16 +105,14 @@ const puzzles = [
     {
         rows: 3,
         columns: 3,
-        image:
-            "image6.jpg",
-        ratio:
-            4 / 3,
-        title:
-            "Growing Together",
+        image: "image6.jpg",
+        ratio: 4 / 3,
+        title: "Growing Together",
         instruction:
             "Honestly Shayonti, growing older is better when I get to do it with you. And somehow, every version of us has been my favourite, still learning, still laughing, still becoming us, together. Here's to all the versions of us we've yet to become, and I know that I'll love them, equally if not more."
     }
 ];
+
 
 /* ================================
    PRELOAD PUZZLE IMAGES
@@ -137,186 +123,240 @@ puzzles.forEach(puzzle => {
     img.src = puzzle.image;
 });
 
+
 /* ================================
    STATE
 ================================ */
-let enteredPassword =
-    "";
 
-let celebrationStarted =
-    false;
+let enteredPassword = "";
 
-let currentPuzzleIndex =
-    0;
+let celebrationStarted = false;
 
-let currentPuzzleState =
-    null;
+let currentPuzzleIndex = 0;
 
-let puzzleTransitioning =
-    false;
+let currentPuzzleState = null;
+
+let puzzleTransitioning = false;
 
 
 /* ================================
    LOGIN
 ================================ */
+
 function isLoginCorrect() {
 
+    if (!usernameInput || !loginPasswordInput) {
+        return false;
+    }
+
     return (
-        usernameInput.value
-            .trim()
-            .toLowerCase() ===
-        "shayonti"
-
-        &&
-
+        usernameInput.value.trim().toLowerCase() === "shayonti" &&
         loginPasswordInput.value ===
-        "the best girlfriend in the universe"
+            "the best girlfriend in the universe"
     );
-
 }
 
 
 function checkLogin() {
 
+    if (!loginButton) {
+        return;
+    }
+
     const correct =
         isLoginCorrect();
 
-    loginButton.disabled =
-        !correct;
+    loginButton.disabled = !correct;
 
     loginButton.classList.toggle(
         "enabled",
         correct
     );
 
-    if (correct) {
+    if (correct && loginError) {
 
         loginError.classList.remove(
             "show"
         );
 
     }
-
 }
 
 
 /* ================================
    LOGIN HINT
 ================================ */
-hintButton.addEventListener(
-    "click",
-    () => {
 
-        hintText.classList.toggle(
-            "show"
-        );
+if (hintButton && hintText) {
 
-    }
-);
+    hintButton.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            hintText.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
 
 
 /* ================================
    LOGIN INPUT
 ================================ */
-usernameInput.addEventListener(
-    "input",
-    () => {
 
-        loginError.classList.remove(
-            "show"
-        );
+if (usernameInput) {
 
-        checkLogin();
+    usernameInput.addEventListener(
+        "input",
+        () => {
 
-    }
-);
+            if (loginError) {
+
+                loginError.classList.remove(
+                    "show"
+                );
+
+            }
+
+            checkLogin();
+
+        }
+    );
+
+}
 
 
-loginPasswordInput.addEventListener(
-    "input",
-    () => {
+if (loginPasswordInput) {
 
-        loginError.classList.remove(
-            "show"
-        );
+    loginPasswordInput.addEventListener(
+        "input",
+        () => {
 
-        checkLogin();
+            if (loginError) {
 
-    }
-);
+                loginError.classList.remove(
+                    "show"
+                );
+
+            }
+
+            checkLogin();
+
+        }
+    );
+
+}
 
 
 /* ================================
    LOGIN BUTTON
 ================================ */
-loginButton.addEventListener(
-    "click",
-    () => {
 
-        if (!isLoginCorrect()) {
+if (loginButton) {
 
-            loginError.classList.add(
-                "show"
-            );
+    loginButton.addEventListener(
+        "click",
+        event => {
 
-            return;
-        }
+            event.preventDefault();
 
-        loginScreen.classList.add(
-            "hide"
-        );
+            if (!isLoginCorrect()) {
 
-        setTimeout(
-            () => {
+                if (loginError) {
 
-                welcomeScreen.classList.add(
-                    "show"
+                    loginError.classList.add(
+                        "show"
+                    );
+
+                }
+
+                return;
+            }
+
+            loginButton.disabled = true;
+
+            if (loginScreen) {
+
+                loginScreen.classList.add(
+                    "hide"
                 );
 
-            },
-            300
-        );
+            }
 
-    }
-);
+            setTimeout(
+                () => {
+
+                    if (welcomeScreen) {
+
+                        welcomeScreen.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                },
+                300
+            );
+
+        }
+    );
+
+}
 
 
 /* ================================
    WELCOME
 ================================ */
-welcomeScreen.addEventListener(
-    "click",
-    () => {
 
-        welcomeScreen.classList.add(
-            "hide"
-        );
+if (welcomeScreen) {
 
-        passwordScreen.classList.add(
-            "show"
-        );
+    welcomeScreen.addEventListener(
+        "click",
+        () => {
 
-    }
-);
+            welcomeScreen.classList.add(
+                "hide"
+            );
+
+            if (passwordScreen) {
+
+                passwordScreen.classList.add(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 /* ================================
-NUMERICAL PASSWORD
+   NUMERICAL PASSWORD
 ================================ */
+
 const numberButtons =
-document.querySelectorAll(
-    ".number-button"
-);
+    document.querySelectorAll(
+        ".number-button"
+    );
 
 const backspaceButton =
-document.getElementById(
-    "backspace"
-);
+    document.getElementById(
+        "backspace"
+    );
 
 const dots =
-document.querySelectorAll(
-    ".dot"
-);
+    document.querySelectorAll(
+        ".dot"
+    );
+
 
 numberButtons.forEach(
     button => {
@@ -340,8 +380,7 @@ numberButtons.forEach(
 
                 if (
                     enteredPassword ===
-                    "27022025"
-                    &&
+                        "27022025" &&
                     !celebrationStarted
                 ) {
 
@@ -358,30 +397,39 @@ numberButtons.forEach(
     }
 );
 
-backspaceButton.addEventListener(
-    "click",
-    () => {
 
-        enteredPassword =
-            enteredPassword.slice(
-                0,
-                -1
-            );
+if (backspaceButton) {
 
-        updateDots();
+    backspaceButton.addEventListener(
+        "click",
+        () => {
 
-    }
-);
+            enteredPassword =
+                enteredPassword.slice(
+                    0,
+                    -1
+                );
+
+            updateDots();
+
+        }
+    );
+
+}
+
 
 function updateDots() {
 
     dots.forEach(
-        (dot, index) => {
+        (
+            dot,
+            index
+        ) => {
 
             dot.classList.toggle(
                 "filled",
                 index <
-                enteredPassword.length
+                    enteredPassword.length
             );
 
         }
@@ -391,7 +439,7 @@ function updateDots() {
 
 
 /* ================================
-NUMERICAL PASSWORD HINT
+   NUMERICAL PASSWORD HINT
 ================================ */
 
 const numericalHint =
@@ -404,6 +452,7 @@ const numericalHintText =
         "numerical-hint-text"
     );
 
+
 if (
     numericalHint &&
     numericalHintText
@@ -411,7 +460,10 @@ if (
 
     numericalHint.addEventListener(
         "click",
-        () => {
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
 
             numericalHintText.classList.toggle(
                 "show"
@@ -424,12 +476,13 @@ if (
 
 
 /* ================================
-FLOWER / HEART SHOWER
+   FLOWER / HEART SHOWER
 ================================ */
 
 /*
  * Creates the custom six-petal flower.
  */
+
 function createCustomFlower(
     variant = null
 ) {
@@ -496,6 +549,7 @@ function createCustomFlower(
 /*
  * Creates the custom heart.
  */
+
 function createCustomHeart() {
 
     const heart =
@@ -518,9 +572,12 @@ function createCustomHeart() {
 
 function startCelebration() {
 
+    if (!passwordScreen) {
+        return;
+    }
+
     passwordScreen.style.pointerEvents =
         "none";
-
 
     const celebration =
         document.createElement(
@@ -537,19 +594,14 @@ function startCelebration() {
 
     function createShowerRow() {
 
-        /*
-         * EXACT ORIGINAL:
-         * one item per 85px column.
-         */
         const columnWidth =
             85;
 
         const columns =
             Math.ceil(
                 window.innerWidth /
-                columnWidth
+                    columnWidth
             );
-
 
         for (
             let column = 0;
@@ -557,88 +609,49 @@ function startCelebration() {
             column++
         ) {
 
-            /*
-             * Mostly flowers,
-             * occasional heart.
-             */
             const isHeart =
                 Math.random() < 0.12;
-
 
             const item =
                 isHeart
                     ? createCustomHeart()
                     : createCustomFlower();
 
-
             item.classList.add(
                 "celebration-item"
             );
 
-
-            /*
-             * Preserve the original
-             * absolute positioning.
-             */
             item.style.position =
                 "absolute";
 
             item.style.top =
                 "-150px";
 
-
-            /*
-             * EXACT ORIGINAL
-             * horizontal positioning.
-             */
             item.style.left =
                 (
                     (
                         column /
                         columns
-                    ) * 100
-
-                    +
-
-                    Math.random() * 5
-
-                    -
-
+                    ) * 100 +
+                    Math.random() * 5 -
                     2.5
-
                 ) + "%";
 
-
-            /*
-             * EXACT ORIGINAL
-             * size: 65px → 115px.
-             */
             const size =
                 65 +
                 Math.random() * 50;
-
 
             item.style.setProperty(
                 "--item-size",
                 size + "px"
             );
 
-
-            /*
-             * EXACT ORIGINAL
-             * fall duration: 5s → 7.2s.
-             */
             item.style.animationDuration =
                 (
                     5 +
                     Math.random() * 2.2
                 ) + "s";
 
-
-            /*
-             * EXACT ORIGINAL
-             * horizontal drift: -90px → +90px.
-             */
             item.style.setProperty(
                 "--drift",
                 (
@@ -647,11 +660,6 @@ function startCelebration() {
                 ) + "px"
             );
 
-
-            /*
-             * EXACT ORIGINAL
-             * rotation: -250deg → +250deg.
-             */
             item.style.setProperty(
                 "--rotation",
                 (
@@ -660,11 +668,6 @@ function startCelebration() {
                 ) + "deg"
             );
 
-
-            /*
-             * Keep the slight heart
-             * timing variation.
-             */
             if (isHeart) {
 
                 item.style.animationDelay =
@@ -673,7 +676,6 @@ function startCelebration() {
                     ) + "s";
 
             }
-
 
             celebration.appendChild(
                 item
@@ -684,15 +686,9 @@ function startCelebration() {
     }
 
 
-    /* Start the shower immediately */
-
     createShowerRow();
 
 
-    /*
-     * EXACT ORIGINAL:
-     * complete new row every 150ms.
-     */
     const shower =
         setInterval(
             createShowerRow,
@@ -700,17 +696,16 @@ function startCelebration() {
         );
 
 
-    /* ================================
-       SHOW PUZZLES HALFWAY THROUGH
-       THE SHOWER
-    ================================= */
-
     setTimeout(
         () => {
 
-            puzzleScreen.classList.add(
-                "show"
-            );
+            if (puzzleScreen) {
+
+                puzzleScreen.classList.add(
+                    "show"
+                );
+
+            }
 
             showFirstPuzzle();
 
@@ -718,10 +713,6 @@ function startCelebration() {
         5000
     );
 
-
-    /* ================================
-       STOP ADDING NEW FLOWERS
-    ================================= */
 
     setTimeout(
         () => {
@@ -734,10 +725,6 @@ function startCelebration() {
         10000
     );
 
-
-    /* ================================
-       MOVE FLOWER SHOWER AWAY
-    ================================= */
 
     setTimeout(
         () => {
@@ -771,11 +758,12 @@ function startCelebration() {
             once: true
         }
     );
+
 }
 
 
 /* ================================
-FADED PUZZLE FLOWERS
+   FADED PUZZLE FLOWERS
 ================================ */
 
 function createPuzzleFlowerLayer(
@@ -790,17 +778,6 @@ function createPuzzleFlowerLayer(
     layer.className =
         "puzzle-flower-layer";
 
-
-    /*
-     * EXACT ORIGINAL DENSITY:
-     *
-     * Puzzle 1 = 16
-     * Puzzle 2 = 27
-     * Puzzle 3 = 38
-     * Puzzle 4 = 49
-     * Puzzle 5 = 60
-     * Puzzle 6 = 71
-     */
     for (
         let i = 0;
         i < density;
@@ -810,24 +787,13 @@ function createPuzzleFlowerLayer(
         const flower =
             createCustomFlower();
 
-
         flower.classList.add(
             "puzzle-flower"
         );
 
-
-        /*
-         * Restore the original
-         * absolute positioning.
-         */
         flower.style.position =
             "absolute";
 
-
-        /*
-         * EXACT ORIGINAL
-         * random position.
-         */
         flower.style.left =
             (
                 Math.random() * 100
@@ -838,41 +804,25 @@ function createPuzzleFlowerLayer(
                 Math.random() * 100
             ) + "%";
 
-
-        /*
-         * EXACT ORIGINAL
-         * size calculation.
-         */
         const size =
             10 +
             Math.random() *
-            Math.min(
-                58,
-                18 + density
-            );
-
+                Math.min(
+                    58,
+                    18 + density
+                );
 
         flower.style.setProperty(
             "--flower-size",
             size + "px"
         );
 
-
-        /*
-         * EXACT ORIGINAL
-         * opacity.
-         */
         flower.style.setProperty(
             "--opacity",
             0.10 +
             Math.random() * 0.24
         );
 
-
-        /*
-         * EXACT ORIGINAL
-         * movement duration.
-         */
         flower.style.setProperty(
             "--duration",
             (
@@ -881,11 +831,6 @@ function createPuzzleFlowerLayer(
             ) + "s"
         );
 
-
-        /*
-         * EXACT ORIGINAL
-         * animation delay.
-         */
         flower.style.setProperty(
             "--delay",
             (
@@ -893,20 +838,18 @@ function createPuzzleFlowerLayer(
             ) + "s"
         );
 
-
         layer.appendChild(
             flower
         );
 
     }
 
-
     return layer;
 }
 
 
 /* ================================
-CREATE PUZZLE STAGE
+   CREATE PUZZLE STAGE
 ================================ */
 
 function createPuzzleStage(
@@ -916,7 +859,6 @@ function createPuzzleStage(
     const puzzle =
         puzzles[index];
 
-
     const stage =
         document.createElement(
             "article"
@@ -925,18 +867,12 @@ function createPuzzleStage(
     stage.className =
         "puzzle-stage";
 
-
-    /*
-     * EXACT ORIGINAL INCREASING
-     * BACKGROUND FLOWER DENSITY.
-     */
     stage.appendChild(
         createPuzzleFlowerLayer(
             16 +
             index * 11
         )
     );
-
 
     const content =
         document.createElement(
@@ -945,7 +881,6 @@ function createPuzzleStage(
 
     content.className =
         "puzzle-content";
-
 
     content.innerHTML = `
         <h1 id="puzzle-title">
@@ -956,7 +891,6 @@ function createPuzzleStage(
             ${puzzle.instruction}
         </p>
     `;
-
 
     const board =
         document.createElement(
@@ -969,28 +903,33 @@ function createPuzzleStage(
     board.dataset.columns =
         puzzle.columns;
 
-
     content.appendChild(
         board
     );
 
-
     const state = {
-        index,
-        puzzle,
-        stage,
-        content,
-        board,
-        pieces: [],
-        selected: null,
-        solved: false
-    };
 
+        index,
+
+        puzzle,
+
+        stage,
+
+        content,
+
+        board,
+
+        pieces: [],
+
+        selected: null,
+
+        solved: false
+
+    };
 
     const totalPieces =
         puzzle.rows *
         puzzle.columns;
-
 
     for (
         let i = 0;
@@ -998,32 +937,32 @@ function createPuzzleStage(
         i++
     ) {
 
-        state.pieces.push(i);
+        state.pieces.push(
+            i
+        );
 
     }
-
 
     shufflePuzzle(
         state.pieces
     );
 
-
     renderPuzzleBoard(
         state
     );
-
 
     stage.appendChild(
         content
     );
 
-
     return state;
 }
+
 
 /* ================================
    SIZE BOARD
 ================================ */
+
 function sizePuzzleBoard(
     state
 ) {
@@ -1043,7 +982,6 @@ function sizePuzzleBoard(
     const maxHeight =
         window.innerHeight * 0.42;
 
-
     if (
         height >
         maxHeight
@@ -1053,30 +991,25 @@ function sizePuzzleBoard(
             maxHeight;
 
         width =
-            height *
-            ratio;
+            height * ratio;
 
     }
-
 
     state.board.style.width =
         Math.round(
             width
         ) + "px";
 
-
     state.board.style.height =
         Math.round(
             height
         ) + "px";
-
 
     state.board.style.gridTemplateRows =
         `repeat(
             ${state.puzzle.rows},
             1fr
         )`;
-
 
     state.board.style.gridTemplateColumns =
         `repeat(
@@ -1090,6 +1023,7 @@ function sizePuzzleBoard(
 /* ================================
    CALCULATE IMAGE POSITION
 ================================ */
+
 function getBackgroundPosition(
     piece,
     puzzle
@@ -1105,12 +1039,13 @@ function getBackgroundPosition(
         piece %
         puzzle.columns;
 
-
     let x = 0;
+
     let y = 0;
 
-
-    if (puzzle.columns > 1) {
+    if (
+        puzzle.columns > 1
+    ) {
 
         x =
             (
@@ -1120,8 +1055,9 @@ function getBackgroundPosition(
 
     }
 
-
-    if (puzzle.rows > 1) {
+    if (
+        puzzle.rows > 1
+    ) {
 
         y =
             (
@@ -1130,7 +1066,6 @@ function getBackgroundPosition(
             ) * 100;
 
     }
-
 
     return {
         x,
@@ -1143,6 +1078,7 @@ function getBackgroundPosition(
 /* ================================
    RENDER BOARD
 ================================ */
+
 function renderPuzzleBoard(
     state
 ) {
@@ -1151,14 +1087,11 @@ function renderPuzzleBoard(
         state
     );
 
-
     const puzzle =
         state.puzzle;
 
-
     state.board.innerHTML =
         "";
-
 
     state.pieces.forEach(
         (
@@ -1171,30 +1104,24 @@ function renderPuzzleBoard(
                     "button"
                 );
 
-
             tile.type =
                 "button";
-
 
             tile.className =
                 "puzzle-tile";
 
-
             tile.style.backgroundImage =
                 `url("${puzzle.image}")`;
-
 
             tile.style.setProperty(
                 "--image-width",
                 `${puzzle.columns * 100}%`
             );
 
-
             tile.style.setProperty(
                 "--image-height",
                 `${puzzle.rows * 100}%`
             );
-
 
             const positionData =
                 getBackgroundPosition(
@@ -1202,18 +1129,15 @@ function renderPuzzleBoard(
                     puzzle
                 );
 
-
             tile.style.setProperty(
                 "--image-x",
                 `${positionData.x}%`
             );
 
-
             tile.style.setProperty(
                 "--image-y",
                 `${positionData.y}%`
             );
-
 
             tile.addEventListener(
                 "click",
@@ -1226,7 +1150,6 @@ function renderPuzzleBoard(
 
                 }
             );
-
 
             state.board.appendChild(
                 tile
@@ -1241,16 +1164,18 @@ function renderPuzzleBoard(
 /* ================================
    SHUFFLE
 ================================ */
+
 function shufflePuzzle(
     pieces
 ) {
 
-    if (pieces.length <= 1) {
+    if (
+        pieces.length <= 1
+    ) {
 
         return;
 
     }
-
 
     do {
 
@@ -1268,7 +1193,6 @@ function shufflePuzzle(
                     Math.random() *
                     (i + 1)
                 );
-
 
             [
                 pieces[i],
@@ -1296,6 +1220,7 @@ function shufflePuzzle(
 /* ================================
    PUZZLE TILE SELECTION
 ================================ */
+
 function selectPuzzleTile(
     state,
     index
@@ -1310,12 +1235,10 @@ function selectPuzzleTile(
 
     }
 
-
     const tiles =
         [
             ...state.board.children
         ];
-
 
     if (
         state.selected === null
@@ -1332,7 +1255,6 @@ function selectPuzzleTile(
 
     }
 
-
     if (
         state.selected === index
     ) {
@@ -1348,7 +1270,6 @@ function selectPuzzleTile(
 
     }
 
-
     [
         state.pieces[
             state.selected
@@ -1361,15 +1282,12 @@ function selectPuzzleTile(
         ]
     ];
 
-
     state.selected =
         null;
-
 
     renderPuzzleBoard(
         state
     );
-
 
     const solved =
         state.pieces.every(
@@ -1379,7 +1297,6 @@ function selectPuzzleTile(
             ) =>
                 piece === position
         );
-
 
     if (solved) {
 
@@ -1395,6 +1312,7 @@ function selectPuzzleTile(
 /* ================================
    COMPLETE PUZZLE
 ================================ */
+
 function completePuzzle(
     state
 ) {
@@ -1402,21 +1320,17 @@ function completePuzzle(
     state.solved =
         true;
 
-
     state.board.classList.add(
         "puzzle-complete"
     );
-
 
     const continueText =
         document.createElement(
             "p"
         );
 
-
     continueText.className =
         "puzzle-continue";
-
 
     if (
         state.index ===
@@ -1437,13 +1351,11 @@ function completePuzzle(
 
     }
 
-
     continueText.addEventListener(
         "click",
         event => {
 
             event.stopPropagation();
-
 
             if (
                 state.index ===
@@ -1456,17 +1368,14 @@ function completePuzzle(
 
             }
 
-
             continueToNextPuzzle();
 
         }
     );
 
-
     state.content.appendChild(
         continueText
     );
-
 
     setTimeout(
         () => {
@@ -1492,6 +1401,7 @@ function completePuzzle(
 /* ================================
    FINAL FOLDED-PAPER REVEAL
 ================================ */
+
 function revealLetter() {
 
     if (
@@ -1502,31 +1412,23 @@ function revealLetter() {
 
     }
 
-
     puzzleTransitioning =
         true;
 
+    if (puzzleScreen) {
 
-    /* ================================
-       STOP PUZZLE INTERACTION
-    ================================= */
+        puzzleScreen.style.pointerEvents =
+            "none";
 
-    puzzleScreen.style.pointerEvents =
-        "none";
+    }
 
+    if (puzzleScreen) {
 
-    /* ================================
-       EXIT THE FINAL PUZZLE
-    ================================= */
+        puzzleScreen.classList.add(
+            "final-exit"
+        );
 
-    puzzleScreen.classList.add(
-        "final-exit"
-    );
-
-
-    /* ================================
-       SHOW SURPRISE SCREEN
-    ================================= */
+    }
 
     if (surpriseScreen) {
 
@@ -1540,23 +1442,10 @@ function revealLetter() {
 
     }
 
-
-    /* ================================
-       GET THE PAPER
-    ================================= */
-
     const surprisePaper =
         document.querySelector(
             ".surprise-paper"
         );
-
-
-    /*
-     * IMPORTANT:
-     * The paper NO LONGER opens
-     * automatically.
-     * The user must click the paper.
-     */
 
     if (surprisePaper) {
 
@@ -1576,52 +1465,34 @@ function revealLetter() {
 /* ================================
    OPEN SURPRISE PAPER
 ================================ */
+
 function openSurprisePaper(
     event
 ) {
 
-    if (
-        event
-    ) {
+    if (event) {
 
         event.stopPropagation();
 
     }
-
 
     const surprisePaper =
         document.querySelector(
             ".surprise-paper"
         );
 
-
-    if (
-        !surprisePaper
-    ) {
+    if (!surprisePaper) {
 
         return;
 
     }
 
-
-    /*
-     * Prevent multiple clicks
-     * while the paper is opening.
-     */
-
     surprisePaper.style.pointerEvents =
         "none";
-
 
     surprisePaper.classList.add(
         "opening"
     );
-
-
-    /* ================================
-       AFTER PAPER FOLDS AWAY,
-       SHOW LETTER
-    ================================= */
 
     setTimeout(
         () => {
@@ -1634,41 +1505,42 @@ function openSurprisePaper(
 
             }
 
+            if (letterScreen) {
 
-            letterScreen.classList.add(
-                "show"
-            );
+                letterScreen.classList.add(
+                    "show"
+                );
+
+            }
 
         },
         950
     );
 
-
-    /* ================================
-       REMOVE OLD PUZZLE
-    ================================= */
-
     setTimeout(
         () => {
 
-            puzzleScreen.classList.remove(
-                "show"
-            );
+            if (puzzleScreen) {
 
-            puzzleScreen.classList.remove(
-                "final-exit"
-            );
+                puzzleScreen.classList.remove(
+                    "show"
+                );
 
-            puzzleTrack.replaceChildren();
+                puzzleScreen.classList.remove(
+                    "final-exit"
+                );
+
+            }
+
+            if (puzzleTrack) {
+
+                puzzleTrack.replaceChildren();
+
+            }
 
         },
         1100
     );
-
-
-    /* ================================
-       OPEN LETTER PAPER
-    ================================= */
 
     setTimeout(
         () => {
@@ -1677,7 +1549,6 @@ function openSurprisePaper(
                 document.querySelector(
                     ".letter-paper"
                 );
-
 
             if (letterPaper) {
 
@@ -1693,7 +1564,6 @@ function openSurprisePaper(
 
             }
 
-
             puzzleTransitioning =
                 false;
 
@@ -1707,25 +1577,27 @@ function openSurprisePaper(
 /* ================================
    FIRST PUZZLE
 ================================ */
+
 function showFirstPuzzle() {
 
     currentPuzzleIndex =
         0;
-
 
     currentPuzzleState =
         createPuzzleStage(
             0
         );
 
+    if (puzzleTrack) {
 
-    puzzleTrack.replaceChildren(
-        currentPuzzleState.stage
-    );
+        puzzleTrack.replaceChildren(
+            currentPuzzleState.stage
+        );
 
+        puzzleTrack.style.transform =
+            "translateY(0)";
 
-    puzzleTrack.style.transform =
-        "translateY(0)";
+    }
 
 }
 
@@ -1733,6 +1605,7 @@ function showFirstPuzzle() {
 /* ================================
    PUZZLE TRANSITION
 ================================ */
+
 function continueToNextPuzzle() {
 
     if (
@@ -1747,33 +1620,26 @@ function continueToNextPuzzle() {
 
     }
 
-
     puzzleTransitioning =
         true;
 
-
     const nextIndex =
         currentPuzzleIndex + 1;
-
 
     const nextPuzzleState =
         createPuzzleStage(
             nextIndex
         );
 
-
     nextPuzzleState.stage.classList.add(
         "next"
     );
-
 
     puzzleTrack.appendChild(
         nextPuzzleState.stage
     );
 
-
     void puzzleTrack.offsetHeight;
-
 
     requestAnimationFrame(
         () => {
@@ -1784,38 +1650,30 @@ function continueToNextPuzzle() {
         }
     );
 
-
     setTimeout(
         () => {
 
             currentPuzzleIndex =
                 nextIndex;
 
-
             currentPuzzleState =
                 nextPuzzleState;
-
 
             puzzleTrack.replaceChildren(
                 nextPuzzleState.stage
             );
 
-
             nextPuzzleState.stage.classList.remove(
                 "next"
             );
 
-
             puzzleTrack.style.transition =
                 "none";
-
 
             puzzleTrack.style.transform =
                 "translateY(0)";
 
-
             void puzzleTrack.offsetHeight;
-
 
             puzzleTrack.style.transition =
                 `
@@ -1827,7 +1685,6 @@ function continueToNextPuzzle() {
                     1
                 )
                 `;
-
 
             puzzleTransitioning =
                 false;
@@ -1842,6 +1699,7 @@ function continueToNextPuzzle() {
 /* ================================
    RESIZE
 ================================ */
+
 window.addEventListener(
     "resize",
     () => {
@@ -1854,3 +1712,15 @@ window.addEventListener(
             renderPuzzleBoard(
                 currentPuzzleState
             );
+
+        }
+
+    }
+);
+
+
+/* ================================
+   INITIAL LOGIN STATE
+================================ */
+
+checkLogin();
