@@ -390,7 +390,7 @@ ACTUAL HINT TEXT
     This is deliberately positioned BELOW the
     "hint" button and ABOVE the password dots.
     */
-    top: 88px;
+    top: 76px;
 
     transform: translateX(-50%);
 
