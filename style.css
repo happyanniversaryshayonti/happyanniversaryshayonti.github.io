@@ -34,7 +34,6 @@ input {
 
 .screen {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -345,6 +344,85 @@ input {
 
 
 /* =========================================================
+   NUMERICAL PASSWORD HINT
+========================================================= */
+
+/*
+   The hint itself is only visible after JavaScript
+   adds the "show" class.
+
+   No box.
+   Small text.
+   More distance from the password dots.
+*/
+
+#numerical-hint {
+    display: inline-block;
+
+    background: none !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    outline: none !important;
+
+    padding: 0 !important;
+
+    margin:
+        8px
+        0
+        0
+        0 !important;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    color: #c98292;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#numerical-hint:hover {
+    color: #b96f82;
+}
+
+#numerical-hint-text {
+    display: none;
+
+    margin:
+        14px
+        0
+        0
+        0 !important;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+
+    color: #c98292;
+
+    text-align: center;
+
+    font-weight: 400;
+}
+
+#numerical-hint-text.show {
+    display: block;
+}
+
+
+/* =========================================================
    KEYPAD
 ========================================================= */
 
@@ -549,7 +627,7 @@ input {
 
 
 /* =========================================================
-PUZZLE BACKGROUND FLOWERS
+   PUZZLE BACKGROUND FLOWERS
 ========================================================= */
 
 .puzzle-flower-layer {
@@ -563,7 +641,6 @@ PUZZLE BACKGROUND FLOWERS
 
     user-select: none;
 }
-
 
 .puzzle-flower {
     position: absolute;
@@ -587,7 +664,7 @@ PUZZLE BACKGROUND FLOWERS
 
 
 /* =========================================================
-CUSTOM FLOWERS
+   CUSTOM FLOWERS
 ========================================================= */
 
 .custom-flower {
@@ -595,8 +672,17 @@ CUSTOM FLOWERS
 
     display: block;
 
-    width: var(--flower-size, var(--item-size));
-    height: var(--flower-size, var(--item-size));
+    width:
+        var(
+            --flower-size,
+            var(--item-size)
+        );
+
+    height:
+        var(
+            --flower-size,
+            var(--item-size)
+        );
 
     flex-shrink: 0;
 
@@ -607,7 +693,7 @@ CUSTOM FLOWERS
 
 
 /* =========================================================
-FLOWER PETALS
+   FLOWER PETALS
 ========================================================= */
 
 .flower-petal {
@@ -619,7 +705,8 @@ FLOWER PETALS
     width: 48%;
     height: 48%;
 
-    border-radius: 50% 50% 48% 48%;
+    border-radius:
+        50% 50% 48% 48%;
 
     transform:
         translate(-50%, -50%)
@@ -643,7 +730,7 @@ FLOWER PETALS
 
 
 /* =========================================================
-FLOWER CENTRE
+   FLOWER CENTRE
 ========================================================= */
 
 .flower-center {
@@ -673,7 +760,7 @@ FLOWER CENTRE
 
 
 /* =========================================================
-FLOWER COLOUR VARIANTS
+   FLOWER COLOUR VARIANTS
 ========================================================= */
 
 /* 1 — Pink inside → white outer edge */
@@ -711,8 +798,9 @@ FLOWER COLOUR VARIANTS
     --petal-outer: #f3a9bd;
 }
 
+
 /* =========================================================
-CUSTOM HEART
+   CUSTOM HEART
 ========================================================= */
 
 .custom-heart {
@@ -732,7 +820,7 @@ CUSTOM HEART
 
 
 /* =========================================================
-HEART PARTS
+   HEART PARTS
 ========================================================= */
 
 .heart-left,
@@ -755,7 +843,6 @@ HEART PARTS
     border-radius: 50%;
 }
 
-
 .heart-left {
     left: 4%;
 
@@ -763,14 +850,12 @@ HEART PARTS
         rotate(-45deg);
 }
 
-
 .heart-right {
     right: 4%;
 
     transform:
         rotate(45deg);
 }
-
 
 .heart-point {
     position: absolute;
@@ -799,12 +884,12 @@ HEART PARTS
     z-index: -1;
 }
 
+
 /* =========================================================
-PUZZLE FLOWER DRIFT
+   PUZZLE FLOWER DRIFT
 ========================================================= */
 
 @keyframes flower-drift {
-
     0% {
         transform:
             translate3d(
@@ -824,8 +909,8 @@ PUZZLE FLOWER DRIFT
             )
             rotate(9deg);
     }
-
 }
+
 
 /* =========================================================
    PUZZLE CONTENT
@@ -1252,10 +1337,6 @@ PUZZLE FLOWER DRIFT
 
     cursor: pointer;
 
-    /*
-       IMPORTANT:
-       The paper is now visible before clicking.
-    */
     transform:
         translateY(0)
         rotate(-3deg)
@@ -1459,7 +1540,6 @@ PUZZLE FLOWER DRIFT
 
 /* =========================================================
    SURPRISE PAPER OPENING
-   STOP-MOTION UNFOLD
 ========================================================= */
 
 .surprise-paper.opening {
@@ -2088,38 +2168,20 @@ PUZZLE FLOWER DRIFT
             0;
     }
 
+    /*
+       Mobile numerical hint
+       stays small and spaced out.
+    */
 
-/* ================================
-   NUMERICAL PASSWORD HINT
-================================ */
+    #numerical-hint {
+        font-size: 10px;
 
-#numerical-hint {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
+        margin-top: 8px !important;
+    }
 
-    padding: 0 !important;
-    margin: 10px 0 0 0 !important;
+    #numerical-hint-text {
+        font-size: 9px;
 
-    font-family: inherit;
-    font-size: 13px;
-    color: #d98aa8;
-
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-#numerical-hint-text {
-    display: none;
-
-    margin: 5px 0 0 0 !important;
-
-    font-family: inherit;
-    font-size: 12px;
-    color: #d98aa8;
-}
-
-#numerical-hint-text.show {
-    display: block;
+        margin-top: 13px !important;
+    }
 }
