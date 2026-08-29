@@ -339,7 +339,6 @@ PASSWORD DOTS
 
 .dot.filled {
     background: #ffffff;
-
     transform: scale(1.08);
 }
 
@@ -357,9 +356,6 @@ NUMERICAL PASSWORD HINT
 
     padding: 0 !important;
 
-    /*
-    Keeps "hint" close to "Enter password".
-    */
     margin: 0 0 32px 0 !important;
 
     font-family: inherit;
@@ -385,22 +381,16 @@ NUMERICAL PASSWORD HINT
 ACTUAL HINT TEXT
 ========================================================= */
 
-/*
-The actual sentence is removed from the normal layout.
-Therefore, when it appears, the dots and keypad DO NOT MOVE.
-*/
-
 #numerical-hint-text {
     position: absolute;
 
     left: 50%;
 
     /*
-    The password content starts with the title.
-    This places the hint sentence underneath
-    the "hint" button and above the circles.
+    This is deliberately positioned BELOW the
+    "hint" button and ABOVE the password dots.
     */
-    top: 62px;
+    top: 88px;
 
     transform: translateX(-50%);
 
