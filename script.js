@@ -145,41 +145,64 @@ let puzzleTransitioning = false;
 
 function isLoginCorrect() {
 
-    if (!usernameInput || !loginPasswordInput) {
+    if (
+        !usernameInput ||
+        !loginPasswordInput
+    ) {
+
         return false;
+
     }
 
     return (
-        usernameInput.value.trim().toLowerCase() === "shayonti" &&
+        usernameInput.value
+            .trim()
+            .toLowerCase() ===
+            "shayonti"
+
+        &&
+
         loginPasswordInput.value ===
             "the best girlfriend in the universe"
     );
+
 }
 
 
 function checkLogin() {
 
     if (!loginButton) {
+
         return;
+
     }
+
 
     const correct =
         isLoginCorrect();
 
-    loginButton.disabled = !correct;
+
+    loginButton.disabled =
+        !correct;
+
 
     loginButton.classList.toggle(
         "enabled",
         correct
     );
 
-    if (correct && loginError) {
+
+    if (
+        correct &&
+        loginError
+    ) {
 
         loginError.classList.remove(
             "show"
         );
 
     }
+
 }
 
 
@@ -187,7 +210,10 @@ function checkLogin() {
    LOGIN HINT
 ================================ */
 
-if (hintButton && hintText) {
+if (
+    hintButton &&
+    hintText
+) {
 
     hintButton.addEventListener(
         "click",
@@ -266,7 +292,10 @@ if (loginButton) {
 
             event.preventDefault();
 
-            if (!isLoginCorrect()) {
+
+            if (
+                !isLoginCorrect()
+            ) {
 
                 if (loginError) {
 
@@ -277,9 +306,13 @@ if (loginButton) {
                 }
 
                 return;
+
             }
 
-            loginButton.disabled = true;
+
+            loginButton.disabled =
+                true;
+
 
             if (loginScreen) {
 
@@ -288,6 +321,7 @@ if (loginButton) {
                 );
 
             }
+
 
             setTimeout(
                 () => {
@@ -323,6 +357,7 @@ if (welcomeScreen) {
             welcomeScreen.classList.add(
                 "hide"
             );
+
 
             if (passwordScreen) {
 
@@ -366,26 +401,32 @@ numberButtons.forEach(
             () => {
 
                 if (
-                    enteredPassword.length >= 8
+                    enteredPassword.length >=
+                    8
                 ) {
 
                     return;
 
                 }
 
+
                 enteredPassword +=
                     button.dataset.number;
 
+
                 updateDots();
+
 
                 if (
                     enteredPassword ===
-                        "27022025" &&
+                        "27022025"
+                    &&
                     !celebrationStarted
                 ) {
 
                     celebrationStarted =
                         true;
+
 
                     startCelebration();
 
@@ -409,6 +450,7 @@ if (backspaceButton) {
                     0,
                     -1
                 );
+
 
             updateDots();
 
@@ -465,6 +507,7 @@ if (
             event.preventDefault();
             event.stopPropagation();
 
+
             numericalHintText.classList.toggle(
                 "show"
             );
@@ -479,6 +522,7 @@ if (
    FLOWER / HEART SHOWER
 ================================ */
 
+
 /*
  * Creates the custom six-petal flower.
  */
@@ -492,8 +536,10 @@ function createCustomFlower(
             "span"
         );
 
+
     flower.className =
         "custom-flower";
+
 
     const chosenVariant =
         variant ||
@@ -501,9 +547,11 @@ function createCustomFlower(
             Math.random() * 4
         ) + 1;
 
+
     flower.classList.add(
         `flower-variant-${chosenVariant}`
     );
+
 
     for (
         let i = 0;
@@ -516,13 +564,16 @@ function createCustomFlower(
                 "span"
             );
 
+
         petal.className =
             "flower-petal";
+
 
         petal.style.setProperty(
             "--petal-index",
             i
         );
+
 
         flower.appendChild(
             petal
@@ -530,19 +581,24 @@ function createCustomFlower(
 
     }
 
+
     const center =
         document.createElement(
             "span"
         );
 
+
     center.className =
         "flower-center";
+
 
     flower.appendChild(
         center
     );
 
+
     return flower;
+
 }
 
 
@@ -557,8 +613,10 @@ function createCustomHeart() {
             "span"
         );
 
+
     heart.className =
         "custom-heart";
+
 
     heart.innerHTML = `
         <span class="heart-left"></span>
@@ -566,26 +624,34 @@ function createCustomHeart() {
         <span class="heart-point"></span>
     `;
 
+
     return heart;
+
 }
 
 
 function startCelebration() {
 
     if (!passwordScreen) {
+
         return;
+
     }
+
 
     passwordScreen.style.pointerEvents =
         "none";
+
 
     const celebration =
         document.createElement(
             "div"
         );
 
+
     celebration.className =
         "celebration";
+
 
     document.body.appendChild(
         celebration
@@ -597,11 +663,13 @@ function startCelebration() {
         const columnWidth =
             85;
 
+
         const columns =
             Math.ceil(
                 window.innerWidth /
-                    columnWidth
+                columnWidth
             );
+
 
         for (
             let column = 0;
@@ -612,45 +680,56 @@ function startCelebration() {
             const isHeart =
                 Math.random() < 0.12;
 
+
             const item =
                 isHeart
                     ? createCustomHeart()
                     : createCustomFlower();
 
+
             item.classList.add(
                 "celebration-item"
             );
 
+
             item.style.position =
                 "absolute";
 
+
             item.style.top =
                 "-150px";
+
 
             item.style.left =
                 (
                     (
                         column /
                         columns
-                    ) * 100 +
-                    Math.random() * 5 -
+                    ) * 100
+                    +
+                    Math.random() * 5
+                    -
                     2.5
                 ) + "%";
+
 
             const size =
                 65 +
                 Math.random() * 50;
+
 
             item.style.setProperty(
                 "--item-size",
                 size + "px"
             );
 
+
             item.style.animationDuration =
                 (
                     5 +
                     Math.random() * 2.2
                 ) + "s";
+
 
             item.style.setProperty(
                 "--drift",
@@ -660,6 +739,7 @@ function startCelebration() {
                 ) + "px"
             );
 
+
             item.style.setProperty(
                 "--rotation",
                 (
@@ -667,6 +747,7 @@ function startCelebration() {
                     250
                 ) + "deg"
             );
+
 
             if (isHeart) {
 
@@ -676,6 +757,7 @@ function startCelebration() {
                     ) + "s";
 
             }
+
 
             celebration.appendChild(
                 item
@@ -707,6 +789,7 @@ function startCelebration() {
 
             }
 
+
             showFirstPuzzle();
 
         },
@@ -732,8 +815,10 @@ function startCelebration() {
             celebration.style.overflow =
                 "visible";
 
+
             celebration.style.transition =
                 "transform 5.8s linear";
+
 
             celebration.style.transform =
                 "translateY(110vh)";
@@ -749,9 +834,14 @@ function startCelebration() {
 
             celebration.remove();
 
-            passwordScreen.classList.remove(
-                "show"
-            );
+
+            if (passwordScreen) {
+
+                passwordScreen.classList.remove(
+                    "show"
+                );
+
+            }
 
         },
         {
@@ -775,8 +865,10 @@ function createPuzzleFlowerLayer(
             "div"
         );
 
+
     layer.className =
         "puzzle-flower-layer";
+
 
     for (
         let i = 0;
@@ -787,22 +879,27 @@ function createPuzzleFlowerLayer(
         const flower =
             createCustomFlower();
 
+
         flower.classList.add(
             "puzzle-flower"
         );
 
+
         flower.style.position =
             "absolute";
+
 
         flower.style.left =
             (
                 Math.random() * 100
             ) + "%";
 
+
         flower.style.top =
             (
                 Math.random() * 100
             ) + "%";
+
 
         const size =
             10 +
@@ -812,16 +909,19 @@ function createPuzzleFlowerLayer(
                     18 + density
                 );
 
+
         flower.style.setProperty(
             "--flower-size",
             size + "px"
         );
+
 
         flower.style.setProperty(
             "--opacity",
             0.10 +
             Math.random() * 0.24
         );
+
 
         flower.style.setProperty(
             "--duration",
@@ -831,6 +931,7 @@ function createPuzzleFlowerLayer(
             ) + "s"
         );
 
+
         flower.style.setProperty(
             "--delay",
             (
@@ -838,13 +939,16 @@ function createPuzzleFlowerLayer(
             ) + "s"
         );
 
+
         layer.appendChild(
             flower
         );
 
     }
 
+
     return layer;
+
 }
 
 
@@ -859,13 +963,16 @@ function createPuzzleStage(
     const puzzle =
         puzzles[index];
 
+
     const stage =
         document.createElement(
             "article"
         );
 
+
     stage.className =
         "puzzle-stage";
+
 
     stage.appendChild(
         createPuzzleFlowerLayer(
@@ -874,13 +981,16 @@ function createPuzzleStage(
         )
     );
 
+
     const content =
         document.createElement(
             "div"
         );
 
+
     content.className =
         "puzzle-content";
+
 
     content.innerHTML = `
         <h1 id="puzzle-title">
@@ -892,20 +1002,25 @@ function createPuzzleStage(
         </p>
     `;
 
+
     const board =
         document.createElement(
             "div"
         );
 
+
     board.className =
         "puzzle-board";
+
 
     board.dataset.columns =
         puzzle.columns;
 
+
     content.appendChild(
         board
     );
+
 
     const state = {
 
@@ -927,9 +1042,11 @@ function createPuzzleStage(
 
     };
 
+
     const totalPieces =
         puzzle.rows *
         puzzle.columns;
+
 
     for (
         let i = 0;
@@ -943,19 +1060,24 @@ function createPuzzleStage(
 
     }
 
+
     shufflePuzzle(
         state.pieces
     );
+
 
     renderPuzzleBoard(
         state
     );
 
+
     stage.appendChild(
         content
     );
 
+
     return state;
+
 }
 
 
@@ -970,17 +1092,21 @@ function sizePuzzleBoard(
     const ratio =
         state.puzzle.ratio;
 
+
     let width =
         Math.min(
             window.innerWidth * 0.65,
             520
         );
 
+
     let height =
         width / ratio;
 
+
     const maxHeight =
         window.innerHeight * 0.42;
+
 
     if (
         height >
@@ -990,26 +1116,31 @@ function sizePuzzleBoard(
         height =
             maxHeight;
 
+
         width =
             height * ratio;
 
     }
+
 
     state.board.style.width =
         Math.round(
             width
         ) + "px";
 
+
     state.board.style.height =
         Math.round(
             height
         ) + "px";
+
 
     state.board.style.gridTemplateRows =
         `repeat(
             ${state.puzzle.rows},
             1fr
         )`;
+
 
     state.board.style.gridTemplateColumns =
         `repeat(
@@ -1035,13 +1166,16 @@ function getBackgroundPosition(
             puzzle.columns
         );
 
+
     const column =
         piece %
         puzzle.columns;
 
+
     let x = 0;
 
     let y = 0;
+
 
     if (
         puzzle.columns > 1
@@ -1055,6 +1189,7 @@ function getBackgroundPosition(
 
     }
 
+
     if (
         puzzle.rows > 1
     ) {
@@ -1066,6 +1201,7 @@ function getBackgroundPosition(
             ) * 100;
 
     }
+
 
     return {
         x,
@@ -1087,11 +1223,14 @@ function renderPuzzleBoard(
         state
     );
 
+
     const puzzle =
         state.puzzle;
 
+
     state.board.innerHTML =
         "";
+
 
     state.pieces.forEach(
         (
@@ -1104,24 +1243,30 @@ function renderPuzzleBoard(
                     "button"
                 );
 
+
             tile.type =
                 "button";
+
 
             tile.className =
                 "puzzle-tile";
 
+
             tile.style.backgroundImage =
                 `url("${puzzle.image}")`;
+
 
             tile.style.setProperty(
                 "--image-width",
                 `${puzzle.columns * 100}%`
             );
 
+
             tile.style.setProperty(
                 "--image-height",
                 `${puzzle.rows * 100}%`
             );
+
 
             const positionData =
                 getBackgroundPosition(
@@ -1129,15 +1274,18 @@ function renderPuzzleBoard(
                     puzzle
                 );
 
+
             tile.style.setProperty(
                 "--image-x",
                 `${positionData.x}%`
             );
 
+
             tile.style.setProperty(
                 "--image-y",
                 `${positionData.y}%`
             );
+
 
             tile.addEventListener(
                 "click",
@@ -1150,6 +1298,7 @@ function renderPuzzleBoard(
 
                 }
             );
+
 
             state.board.appendChild(
                 tile
@@ -1177,6 +1326,7 @@ function shufflePuzzle(
 
     }
 
+
     do {
 
         for (
@@ -1193,6 +1343,7 @@ function shufflePuzzle(
                     Math.random() *
                     (i + 1)
                 );
+
 
             [
                 pieces[i],
@@ -1235,10 +1386,12 @@ function selectPuzzleTile(
 
     }
 
+
     const tiles =
         [
             ...state.board.children
         ];
+
 
     if (
         state.selected === null
@@ -1247,13 +1400,16 @@ function selectPuzzleTile(
         state.selected =
             index;
 
+
         tiles[index].classList.add(
             "selected"
         );
 
+
         return;
 
     }
+
 
     if (
         state.selected === index
@@ -1263,12 +1419,15 @@ function selectPuzzleTile(
             "selected"
         );
 
+
         state.selected =
             null;
+
 
         return;
 
     }
+
 
     [
         state.pieces[
@@ -1282,12 +1441,15 @@ function selectPuzzleTile(
         ]
     ];
 
+
     state.selected =
         null;
+
 
     renderPuzzleBoard(
         state
     );
+
 
     const solved =
         state.pieces.every(
@@ -1297,6 +1459,7 @@ function selectPuzzleTile(
             ) =>
                 piece === position
         );
+
 
     if (solved) {
 
@@ -1320,17 +1483,21 @@ function completePuzzle(
     state.solved =
         true;
 
+
     state.board.classList.add(
         "puzzle-complete"
     );
+
 
     const continueText =
         document.createElement(
             "p"
         );
 
+
     continueText.className =
         "puzzle-continue";
+
 
     if (
         state.index ===
@@ -1339,6 +1506,7 @@ function completePuzzle(
 
         continueText.textContent =
             "are you ready for a little surprise?";
+
 
         continueText.classList.add(
             "final-surprise"
@@ -1351,11 +1519,13 @@ function completePuzzle(
 
     }
 
+
     continueText.addEventListener(
         "click",
         event => {
 
             event.stopPropagation();
+
 
             if (
                 state.index ===
@@ -1368,14 +1538,17 @@ function completePuzzle(
 
             }
 
+
             continueToNextPuzzle();
 
         }
     );
 
+
     state.content.appendChild(
         continueText
     );
+
 
     setTimeout(
         () => {
@@ -1412,17 +1585,16 @@ function revealLetter() {
 
     }
 
+
     puzzleTransitioning =
         true;
+
 
     if (puzzleScreen) {
 
         puzzleScreen.style.pointerEvents =
             "none";
 
-    }
-
-    if (puzzleScreen) {
 
         puzzleScreen.classList.add(
             "final-exit"
@@ -1430,11 +1602,13 @@ function revealLetter() {
 
     }
 
+
     if (surpriseScreen) {
 
         surpriseScreen.classList.remove(
             "hide"
         );
+
 
         surpriseScreen.classList.add(
             "show"
@@ -1442,10 +1616,12 @@ function revealLetter() {
 
     }
 
+
     const surprisePaper =
         document.querySelector(
             ".surprise-paper"
         );
+
 
     if (surprisePaper) {
 
@@ -1476,10 +1652,12 @@ function openSurprisePaper(
 
     }
 
+
     const surprisePaper =
         document.querySelector(
             ".surprise-paper"
         );
+
 
     if (!surprisePaper) {
 
@@ -1487,12 +1665,15 @@ function openSurprisePaper(
 
     }
 
+
     surprisePaper.style.pointerEvents =
         "none";
+
 
     surprisePaper.classList.add(
         "opening"
     );
+
 
     setTimeout(
         () => {
@@ -1504,6 +1685,7 @@ function openSurprisePaper(
                 );
 
             }
+
 
             if (letterScreen) {
 
@@ -1517,6 +1699,7 @@ function openSurprisePaper(
         950
     );
 
+
     setTimeout(
         () => {
 
@@ -1526,11 +1709,13 @@ function openSurprisePaper(
                     "show"
                 );
 
+
                 puzzleScreen.classList.remove(
                     "final-exit"
                 );
 
             }
+
 
             if (puzzleTrack) {
 
@@ -1542,6 +1727,7 @@ function openSurprisePaper(
         1100
     );
 
+
     setTimeout(
         () => {
 
@@ -1549,6 +1735,7 @@ function openSurprisePaper(
                 document.querySelector(
                     ".letter-paper"
                 );
+
 
             if (letterPaper) {
 
@@ -1563,6 +1750,7 @@ function openSurprisePaper(
                 );
 
             }
+
 
             puzzleTransitioning =
                 false;
@@ -1583,16 +1771,19 @@ function showFirstPuzzle() {
     currentPuzzleIndex =
         0;
 
+
     currentPuzzleState =
         createPuzzleStage(
             0
         );
+
 
     if (puzzleTrack) {
 
         puzzleTrack.replaceChildren(
             currentPuzzleState.stage
         );
+
 
         puzzleTrack.style.transform =
             "translateY(0)";
@@ -1620,26 +1811,43 @@ function continueToNextPuzzle() {
 
     }
 
+
     puzzleTransitioning =
         true;
 
+
     const nextIndex =
         currentPuzzleIndex + 1;
+
 
     const nextPuzzleState =
         createPuzzleStage(
             nextIndex
         );
 
+
     nextPuzzleState.stage.classList.add(
         "next"
     );
+
+
+    if (!puzzleTrack) {
+
+        puzzleTransitioning =
+            false;
+
+        return;
+
+    }
+
 
     puzzleTrack.appendChild(
         nextPuzzleState.stage
     );
 
+
     void puzzleTrack.offsetHeight;
+
 
     requestAnimationFrame(
         () => {
@@ -1650,30 +1858,38 @@ function continueToNextPuzzle() {
         }
     );
 
+
     setTimeout(
         () => {
 
             currentPuzzleIndex =
                 nextIndex;
 
+
             currentPuzzleState =
                 nextPuzzleState;
+
 
             puzzleTrack.replaceChildren(
                 nextPuzzleState.stage
             );
 
+
             nextPuzzleState.stage.classList.remove(
                 "next"
             );
 
+
             puzzleTrack.style.transition =
                 "none";
+
 
             puzzleTrack.style.transform =
                 "translateY(0)";
 
+
             void puzzleTrack.offsetHeight;
+
 
             puzzleTrack.style.transition =
                 `
@@ -1685,6 +1901,7 @@ function continueToNextPuzzle() {
                     1
                 )
                 `;
+
 
             puzzleTransitioning =
                 false;
