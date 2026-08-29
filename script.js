@@ -53,7 +53,7 @@ const puzzles = [
         rows: 1,
         columns: 2,
         image:
-            "images/image1.jpg",
+            "image1.jpg",
         ratio:
             4 / 3,
         title:
@@ -66,7 +66,7 @@ const puzzles = [
         rows: 2,
         columns: 1,
         image:
-            "images/image2.jpg",
+            "image2.jpg",
         ratio:
             3 / 2,
         title:
@@ -79,7 +79,7 @@ const puzzles = [
         rows: 2,
         columns: 2,
         image:
-            "images/image3.jpg",
+            "image3.jpg",
         ratio:
             4 / 3,
         title:
@@ -92,7 +92,7 @@ const puzzles = [
         rows: 2,
         columns: 2,
         image:
-            "images/image4.jpg",
+            "image4.jpg",
         ratio:
             4 / 3,
         title:
@@ -105,7 +105,7 @@ const puzzles = [
         rows: 2,
         columns: 3,
         image:
-            "images/image5.jpg",
+            "image5.jpg",
         ratio:
             3429 / 1769,
         title:
@@ -118,7 +118,7 @@ const puzzles = [
         rows: 3,
         columns: 3,
         image:
-            "images/image6.jpg",
+            "image6.jpg",
         ratio:
             4 / 3,
         title:
