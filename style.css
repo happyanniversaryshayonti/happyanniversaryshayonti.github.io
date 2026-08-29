@@ -2087,4 +2087,15 @@ PUZZLE FLOWER DRIFT
             24px
             0;
     }
-}
+
+
+#numerical-hint {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}}
