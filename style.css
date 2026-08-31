@@ -286,7 +286,14 @@ input {
 
 .password-content {
     position: relative;
+
     text-align: center;
+
+    font-family:
+        Garamond,
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .password-content h1 {
@@ -316,7 +323,11 @@ input {
 
     margin: 0 auto 0 auto !important;
 
-    font-family: inherit;
+    font-family:
+        Garamond,
+        Georgia,
+        "Times New Roman",
+        serif;
 
     font-size: 11px;
 
@@ -371,7 +382,11 @@ input {
 
     display: none;
 
-    font-family: inherit;
+    font-family:
+        Garamond,
+        Georgia,
+        "Times New Roman",
+        serif;
 
     font-size: 9px;
 
@@ -2167,6 +2182,12 @@ input {
     ===================================================== */
 
     #numerical-hint {
+        font-family:
+            Garamond,
+            Georgia,
+            "Times New Roman",
+            serif;
+
         font-size: 10px;
 
         color: #000000;
@@ -2175,6 +2196,12 @@ input {
     }
 
     #numerical-hint-text {
+        font-family:
+            Garamond,
+            Georgia,
+            "Times New Roman",
+            serif;
+
         font-size: 9px;
 
         color: #000000;
